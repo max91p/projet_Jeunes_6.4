@@ -17,7 +17,7 @@
     </head>
     <body style="margin: 0;">
         <?php
-            header("Location: accueil_compte.html", true);
+            header("Location: voir_profil.php", true);
             exit();
         ?>
         <header>
@@ -28,8 +28,5 @@
                 <a style="vertical-align: middle;font-size: 30px;">Jeune</a>
             </div>
         </header>
-        <main>
-            
-        </main>
     </body>
 </html>

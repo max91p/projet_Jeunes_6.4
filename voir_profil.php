@@ -18,19 +18,22 @@
 <body style="margin: 0;">
 	<header>
 		<div align=left style="vertical-align: middle;">
-		    <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
+		    <img style="max-height: 100px;" src="logo.png" alt="Logo site">
 		</div>
 		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
 			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
 		</div>
 	</header>
+	<br>
+	<br>
 	<main>
-		<form action="verification_connexion.php" method="post">
-			<p>Email <input name="email" type="email"></p>
-			<p>Mot de passe <input name="mdp" type="password"></p>
-			<input type="submit" value="Se connecter">
-		</form>
-		<p>Vous avez pas de compte ? <a style="color:blue" href="page_creation_compte.php">Inscrivez-vous</a></p>
+		<a href="accueil_compte.html"><--</a>
+		<p>Votre compte</p>
+		<p>Nom<br>Dupont</p>
+		<p>Prénom<br>Martin</p>
+		<p>Date de naissance<br>01/01/1970</p>
+		<p>Email<br>martin.dupont@gmail.com</p>
+		<a href="page_modifier_compte.php">Modifier</a>
 	</main>
 </body>
 

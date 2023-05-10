@@ -25,15 +25,14 @@
 		</div>
 	</header>
 	<main>
-		<form action="ajout_compte.php" method="post">
-            <p>Nom <input name="nom" type="text"></p>
-            <p>Prénom <input name="prenom" type="text"></p>
-            <p>Date de naissance <input name="naissance" type="date"></p>
-			<p>Email <input name="email" type="email"></p>
-			<p>Mot de passe <input name="mdp" type="password"></p>
-			<input type="submit" value="Créer un compte">
+		<form action="modifier_info_compte.php" method="post">
+            <p>Nom <input value="Dupont" name="nom" type="text"></p>
+            <p>Prénom <input value="Martin" name="prenom" type="text"></p>
+            <p>Date de naissance <input value="1970-01-01" name="naissance" type="date"></p>
+			<p>Email <input value="martin.dupont@gmail.com" name="email" type="email"></p>
+			<p>Mot de passe <input value="password" name="mdp" type="password"></p>
+			<input type="submit" value="Enregistrer">
 		</form>
-		<p>Vous avez déjà un compte ? <a style="color:blue" href="page_connexion.php">Connectez-vous</a></p>
 	</main>
 </body>
 
