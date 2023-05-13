@@ -41,6 +41,10 @@
 	<br>
 	<main>
         <a href="accueil_compte.html"><--</a>
+		<div style="position:absolute;right:50px;top:130px;">
+			<a style="font-size:25px;" href="selection_envoi_ref.php">Envoyer des références</a><br><br>
+			<a style="font-size:25px;" href="selection_exporter_ref.php">Exporter des références</a>
+		</div>
         <h2 style="text-align:center;">Vos références</h2>
         <!--A ne pas écrire dans le html directement, ça sera écrit par le php. MAIS CSS à faire pour changer la couleur du statut ou mettre la bordure-->
         <table id="ref1" onclick="clic_ref(this)" style="border:2px solid black; align:center;margin-right:30%;margin-left:30%;width:40%;padding:5px;">
@@ -57,7 +61,6 @@
             </tr>
         </table>         
 	</main>
-    <!-- location.href='voir_demande_jeune.php';-->
 </body>
 
 </html>
