@@ -18,7 +18,7 @@
 <body style="margin: 0;">
 	<header>
 		<div align=left style="vertical-align: middle;">
-		    <img style="max-height: 100px;" src="logo.png" alt="Logo site">
+			<a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
 		</div>
 		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
 			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
