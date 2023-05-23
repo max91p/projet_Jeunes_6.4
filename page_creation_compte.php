@@ -24,13 +24,20 @@
 			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
 		</div>
 	</header>
+
+
 	<main>
-		<form action="ajout_compte.php" method="post">
-            <p>Nom <input name="nom" type="text"></p>
-            <p>Prénom <input name="prenom" type="text"></p>
-            <p>Date de naissance <input name="naissance" type="date"></p>
-			<p>Email <input name="email" type="email"></p>
-			<p>Mot de passe <input name="mdp" type="password"></p>
+	<?php
+	session_start();
+	$_SESSION['message'] = '';
+	echo 'message:' . $_SESSION['message'];
+?>
+		<form action="page_sauvegarde_compte.php" method="post">
+            <p>Nom <input name="firstname" type="text"></p>
+            <p>Prénom <input name="lastname" type="text"></p>
+            <p>Date de naissance <input name="birth" type="date"></p>
+			<p>Email <input name="username" type="email"></p>
+			<p>Mot de passe <input name="password" type="password"></p>
 			<input type="submit" value="Créer un compte">
 		</form>
 		<p>Vous avez déjà un compte ? <a style="color:blue" href="page_connexion.php">Connectez-vous</a></p>

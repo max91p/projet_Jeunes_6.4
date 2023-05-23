@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<style>
@@ -24,11 +24,18 @@
 			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
 		</div>
 	</header>
+
+	<?php
+session_start();
+echo $_SESSION['error'];
+$_SESSION['message'] = '';
+?>
+
 	<main>
 		<form action="verification_connexion.php" method="post">
-			<p>Email <input name="email" type="email"></p>
-			<p>Mot de passe <input name="mdp" type="password"></p>
-			<input type="submit" value="Se connecter">
+			<p>Email <input name="email" type="email" id="email"></p>
+			<p>Mot de passe <input name="password" type="password" id="password"></p>
+			<input type="submit" value="connexion">
 		</form>
 		<p>Vous avez pas de compte ? <a style="color:blue" href="page_creation_compte.php">Inscrivez-vous</a></p>
 	</main>
