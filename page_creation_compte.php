@@ -2,45 +2,36 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+	<link rel="stylesheet" href="./style/page_creation_compte.css">
+	
 </head>
 <body style="margin: 0;">
-	<header>
-		<div align=left style="vertical-align: middle;">
+<header>
+		<div id="logo">
 		    <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
+			
 		</div>
-		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
-			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
+		<div id="texte">Je donne de la valeur à mon engagement</div>
+		
+		<div id="bouton">
+			<a href="voir_profil.php">Jeune</a>
 		</div>
 	</header>
-
-
 	<main>
-	<?php
-	session_start();
-	$_SESSION['message'] = '';
-	echo 'message:' . $_SESSION['message'];
-?>
-		<form action="page_sauvegarde_compte.php" method="post">
-            <p>Nom <input name="firstname" type="text"></p>
-            <p>Prénom <input name="lastname" type="text"></p>
-            <p>Date de naissance <input name="birth" type="date"></p>
-			<p>Email <input name="username" type="email"></p>
-			<p>Mot de passe <input name="password" type="password"></p>
-			<input type="submit" value="Créer un compte">
+		<div class="gauche  "> <fieldset>
+		<form action="ajout_compte.php" method="post">
+			<p>  <span class="rose">Créez un compte  </span></p>
+            <p>Nom  <br><input size="50" placeholder="Martin" name="nom" type="text"></p>
+            <p>Prénom <br><input size="50" placeholder="Arthur" name="prenom" type="text"></p>
+            <p>Date de naissance <br><input  name="naissance" type="date"></p>
+			<p>Email <br><input  size="50" placeholder="arthur.martin@gmail.com" name="email" type="email"></p>
+			<p>Mot de passe <br><input size="50"  placeholder="****" name="mdp" type="password"></p>
+			<div class="centre"> <input class="submit" type="submit" value="Créer un compte"> 
 		</form>
-		<p>Vous avez déjà un compte ? <a style="color:blue" href="page_connexion.php">Connectez-vous</a></p>
+		<p>Vous avez déjà un compte ? <a style="color:rgb(240, 9, 124)" href="page_connexion.php">Connectez-vous</a></p>
+		</div>  
+		</div>
+		</fieldset>
 	</main>
 </body>
 
