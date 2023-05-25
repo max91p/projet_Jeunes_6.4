@@ -1,0 +1,94 @@
+header{
+    width: 100%;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    background: #a8a8a8;
+}
+
+a{
+    all: unset;
+}
+
+body{
+    margin : 0;
+}
+
+#logo{
+    vertical-align: middle;
+    text-align: left;
+    width:200px;
+    display: inline-block;
+    position:relative;
+    cursor: pointer;
+}
+#texte{
+    display: inline-block;
+    position:relative;
+    font-size: 30px;
+    color:white;
+}
+
+#bouton{
+    position:absolute;
+    right:40px;
+    top:25px;
+    height:50px;
+    width:auto;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    background: rgb(240, 9, 124);
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 30px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#bouton:before {
+    height: 0%;
+    width: 2px;
+}
+#bouton:hover{
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),-4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2),inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+.centre {
+    text-align: center;
+    
+}
+
+
+.gauche {
+    position: absolute;
+    top: 30px;
+    left: 35%;
+    width: 400px;
+    margin-top: 200px;
+    text-align :left; 
+ }
+
+ .roseG{
+     color: rgb(240, 9, 124);
+     font-size: x-large;
+ }
+
+ .rose {
+     color:rgb(240, 9, 124);
+ }
+
+ input {
+    border:1px solid rgb(240, 9, 124);
+    }
+
+    fieldset {
+        border:1px solid rgb(240, 9, 124); 
+    }
+
+    .submit {
+        background-color: rgb(240, 9, 124);
+        color: white;
+    }
