@@ -1,0 +1,39 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #DADADA ;
+    zoom: 100%;
+    
+}
+footer{
+    margin-top: auto;
+    background:#FFFFFF;
+}
+h1{
+    text-align: center;
+    color: #2A206E;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+p{
+    text-align: center;
+}
+.P{
+    text-align: center;
+    color: #2A206E;
+    font-size: x-large;
+}
+
+
+a{
+text-decoration: none;
+color: red;
+font-size: x-large;
+display:block;
+text-align:center;
+}
+    
