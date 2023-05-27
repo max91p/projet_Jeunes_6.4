@@ -21,6 +21,8 @@
 			$id=$_GET['reference_id'];
 			$fichier=fopen("references.txt","r");
 			$trouve=false;
+			$contenu_avant=array();
+			$contenu_apres=array();
 			while ($trouve==false && !feof($fichier)){
 				$ligne_entiere="";
 				$fin=false;
@@ -35,7 +37,7 @@
 						}
 					}elseif ($nb_saut==1){
 						$nb_saut=0;
-						$ligne_entiere .= "/n$ligne";
+						$ligne_entiere .= "\n$ligne";
 					}else{
 						$ligne_entiere .= "$ligne";
 					}
@@ -44,9 +46,10 @@
 				$id_ligne=$ligne_decoupee[0];
 				if ($id_ligne==$id){
 					$trouve=true;
+				}else{
+					array_push($contenu_avant,$ligne_entiere);
 				}
 			}
-			fclose($fichier);
 			if ($trouve==false){
 				echo "Erreur sur l'ID";
 			}else{
@@ -120,11 +123,49 @@
 					</form>
 				</main>";
 			}
+			while (!feof($fichier)){
+				$ligne_entiere="";
+				$fin=false;
+				$nb_saut=0;
+				while ($fin==false && !feof($fichier)){
+					$ligne=fgets($fichier);
+					if ($ligne=="\n"){
+						if ($nb_saut==1){
+							$fin=true;
+						}else{
+							$nb_saut=$nb_saut+1;
+						}
+					}elseif ($nb_saut==1){
+						$nb_saut=0;
+						$ligne_entiere .= "\n$ligne";
+					}else{
+						$ligne_entiere .= "$ligne";
+					}
+				}
+				array_push($contenu_apres,$ligne_entiere);
+			}
+			fclose($fichier);
 		}
 		if(isset($_POST["submit"])) {
-			//compléter info sur la référence dans le fichier -> demander à Emma le moyen qu'elle a trouvé pour ne pas avoir à réecrire tout le fichier
-			//changer le statut de la référence pour le jeune
-			//Bonus : envoyer un mail au jeune pour lui informer que sa référence a été validé
+			$ligne_decoupee[9]=$_POST['nom_referent'];
+			$ligne_decoupee[10]=$_POST['prenom_referent'];
+			$ligne_decoupee[11]=$_POST['email_referent'];
+			$savoir_faire_observes=$_POST['savoir_faire_observes'];
+			$savoir_etre_observes=$_POST['savoir_etre_observes'];
+			$commentaires=$_POST['commentaires'];
+			$fichier=fopen("references.txt","w");
+			for ($x = 0; $x< count($contenu_avant);$x++){
+				fwrite($fichier,$contenu_avant[$x]);
+				fwrite($fichier,"\n\n\n");
+			}
+			for ($x=0;$x<count($ligne_decoupee)-1;$x++){
+				fwrite($fichier,"$ligne_decoupee[$x]|");
+			}
+			fwrite($fichier,"Répondu|$savoir_faire_observes|$savoir_etre_observes|$commentaires\n\n\n");
+			for ($x = 0; $x< count($contenu_apres);$x++){
+				fwrite($fichier,$contenu_apres[$x]);
+				fwrite($fichier,"\n\n\n");
+			}
 		}
 	?>
 	
