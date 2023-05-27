@@ -5,11 +5,11 @@ error_reporting(E_ALL);
 
 session_start();
 
-$firstname  = trim($_POST['firstname']);
-$lastname   = trim($_POST['lastname']);
-$birth      = trim($_POST['birth']);
-$username   = trim($_POST['username']);
-$password   = trim($_POST['password']);
+$firstname = trim($_POST['firstname']);
+$lastname = trim($_POST['lastname']);
+$birth = trim($_POST['birth']);
+$username = trim($_POST['email']);
+$password = trim($_POST['password']);
 
  // Vérification des champs vides  
  if($firstname == '' || $lastname == '' || $birth == '' || $username == '' || $password == '')
@@ -27,7 +27,11 @@ $csv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . $pa
 //écriture dans le fichier csv des données entrées
 $data = file_put_contents('people.csv', $csv, FILE_APPEND);
 
-$_SESSION['email'] = $username;
+$_SESSION["nom_jeune"] = $lastname;
+$_SESSION["prenom_jeune"] = $firstname;
+$_SESSION["email_jeune"] = $username;
+$_SESSION["naissance"] = $birth;
+$_SESSION["mdp"] = $password;
 header('Location: accueil_compte.html');
 exit();
 ?>

@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +19,78 @@
 	</style>
 </head>
 <body style="margin: 0;">
+    <?php
+        use PHPMailer\PHPMailer\PHPMailer; 
+        use PHPMailer\PHPMailer\SMTP; 
+        use PHPMailer\PHPMailer\Exception;
+        require 'PHPMailer/src/Exception.php'; 
+        require 'PHPMailer/src/PHPMailer.php'; 
+        require 'PHPMailer/src/SMTP.php';
+		if(isset($_POST["submit"])) {
+            $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $id="";
+            for ($i = 0; $i < 10; $i++) {
+                $id .= $caracteres[rand(0,strlen($caracteres)-1)];
+            }
+			enregistrer_demande($id);
+            envoyer_demande_mail($id);
+		}
+        function enregistrer_demande($id){
+            $milieu=$_POST["milieu"];
+            $duree=$_POST["duree"];
+            $description=$_POST["description"];
+            $savoir_faire=$_POST["savoir_faire"];
+            $savoir_etre=$_POST["savoir_etre"];
+            $nom_referent=$_POST["nom_referent"];
+            $prenom_referent=$_POST["prenom_referent"];
+            $email_referent=$_POST["email_referent"];
+            $nom_jeune=$_SESSION["nom_jeune"];
+            $prenom_jeune=$_SESSION["prenom_jeune"];
+            $email_jeune=$_SESSION["email_jeune"];
+            $fichier=fopen("references.txt","a");
+            $texte="$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|En attente\n\n\n";
+            fwrite($fichier,$texte);
+			fclose($fichier);
+        }
+		function envoyer_demande_mail($id){
+            $milieu=$_POST["milieu"];
+            $duree=$_POST["duree"];
+            $description=$_POST["description"];
+            $savoir_faire=$_POST["savoir_faire"];
+            $savoir_etre=$_POST["savoir_etre"];
+            $nom_referent=$_POST["nom_referent"];
+            $prenom_referent=$_POST["prenom_referent"];
+            $email_referent=$_POST["email_referent"];
+            $nom_jeune=$_SESSION["nom_jeune"];
+            $prenom_jeune=$_SESSION["prenom_jeune"];
+            $email_jeune=$_SESSION["email_jeune"];
+            $mail = new PHPMailer; 
+            $mail->CharSet = "UTF-8";
+            // Server settings 
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output 
+            $mail->isSMTP();                            // Set mailer to use SMTP 
+            $mail->Host = 'smtp-mail.outlook.com';           // Specify main and backup SMTP servers 
+            $mail->SMTPAuth = true;                     // Enable SMTP authentication 
+            $mail->Username = 'jeunes64@outlook.fr';       // SMTP username 
+            $mail->Password = 'InfoProjet64';         // SMTP password 
+            $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
+            $mail->Port = 587;                          // TCP port to connect to 
+            $mail->setFrom('jeunes64@outlook.fr', 'Jeunes 6.4'); 
+            $mail->addReplyTo('jeunes64@outlook.fr', 'Jeunes 6.4');
+            $mail->addAddress($email_referent);
+            $mail->isHTML(true);
+            $mail->Subject = "Jeunes 6.4 : Demande de référence pour $prenom_jeune $nom_jeune"; 
+            $bodyContent = "Bonjour $prenom_referent $nom_referent,<br><br>$prenom_jeune $nom_jeune vous demande d'être son référent pour son expérience dans le milieu \"$milieu\" via la plateforme Jeunes 6.4.<br><br>
+            JEUNES 6.4 est un dispositif de valorisation de l’engagement des jeunes en Pyrénées-Atlantiques soutenu par l’Etat, le Conseil général, le conseil régional, les CAF Béarn-Soule et Pays Basque, la MSA, l’université de Pau et des pays de l’Adour, la CPAM.<br><br>
+            Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/consulter_reference_referent.php/?reference_id=$id<br><br>
+            (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_reference_referent.php et rajouter /?reference_id=$id derrière)
+            Cordialement,<br><br>L'équipe de Jeunes 6.4"; 
+            $mail->Body= $bodyContent;
+            $res=$mail->send();
+            header("Location: accueil_compte.html", true);
+            exit();
+        }
+	?>
 	<header>
 		<div align=left style="vertical-align: middle;">
             <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
@@ -29,7 +104,7 @@
 	<main>
         <a href="accueil_compte.html"><--</a>
         <h5>Décrivez votre expérience et mettez en avant ce que vous en avez retiré.</h5>
-        <form action="envoi_demande.php" method="post">
+        <form method="post">
             <table style="width:100%;table-layout: fixed;" cellspacing=4>
                 <colgroup>
                     <col span="1" style="width: 50%;">
@@ -63,7 +138,7 @@
             </table>
             <br>
             <div style="text-align:center;">
-            <input style="font-size:20px;" type="submit" value="Valider">
+            <input style="font-size:20px;" type="submit" name="submit" value="Valider">
             </div>
             <br>
             <br>

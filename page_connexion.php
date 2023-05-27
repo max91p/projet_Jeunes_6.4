@@ -14,15 +14,15 @@
 		<div id="texte">Je donne de la valeur à mon engagement</div>
 		
 		<div id="bouton">
-			<a href="voir_profil.php">Jeune</a>
+			<a>Jeune</a>
 		</div>
 	</header>
 	<main>
 	<div class="gauche  "> <fieldset>
 		<form action="verification_connexion.php" method="post">
 		<p>  <span class="roseG">Connectez vous </span></p>
-			<p>Email <br><input  size="50" placeholder="arthur.martin@gmail.com"name="email" type="email"></p>
-			<p>Mot de passe  <br><input size="50"  placeholder="****" name="mdp" type="password"></p>
+			<p>Email <br><input  size="50" placeholder="arthur.martin@gmail.com" name="email" type="email"></p>
+			<p>Mot de passe  <br><input size="50"  placeholder="****" name="password" type="password"></p>
 			<div class="centre"><input  class="submit "type="submit" value="Se connecter"> 
 		</form>
 		<p>Vous avez pas de compte ? <a style="color:blue" href="page_creation_compte.php"> <span class="rose">Inscrivez-vous</a></p> </div> </div>

@@ -15,8 +15,12 @@ var_dump($_POST);
 foreach ($data as $item) {
     $csv = str_getcsv($item, ';');
     var_dump($item);
-    if ($username == $csv[0] && $password == $csv[1]) {
-        $_SESSION['email'] = $username;
+    if ($username == $csv[3] && $password == $csv[4]) {
+        $_SESSION["prenom_jeune"] = $csv[0];
+        $_SESSION["nom_jeune"] = $csv[1];
+        $_SESSION["email_jeune"] = $username;
+        $_SESSION["naissance"] = $csv[2];
+        $_SESSION["mdp"] = $password;
         header('Location: accueil_compte.html');
         exit();
     }
