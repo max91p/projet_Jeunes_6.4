@@ -79,16 +79,16 @@ body{
     text-align: center;
 }
 .lien{
-    max-width: 900px;
+    max-width: 550px;
     max-height: 300px;
     line-height: 80px;
     position: relative;
     margin: 0 auto;
     background-color: rgb(240, 9, 124);
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     border-radius: 30px;
-    margin-top: 150px;
+    margin-top: 110px;
     cursor: pointer;
 
 }
