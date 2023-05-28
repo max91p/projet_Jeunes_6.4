@@ -3,35 +3,51 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<link rel="stylesheet" href="./style/page_creation_compte.css">
-	
+	<title>Création Compte</title>
 </head>
-<body style="margin: 0;">
+<body>
 <header>
 		<div id="logo">
-		    <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
-			
+		    <a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
 		</div>
 		<div id="texte">Je donne de la valeur à mon engagement</div>
-		
+
 		<div id="bouton">
 			<a>Jeune</a>
 		</div>
 	</header>
 	<main>
-		<div class="gauche  "> <fieldset>
+		<div id="content">
+		<fieldset>
+			<legend>Créez un compte</legend>
 		<form action="page_sauvegarde_compte.php" method="post">
-			<p>  <span class="rose">Créez un compte  </span></p>
-            <p>Nom  <br><input size="50" placeholder="Martin" name="firstname" type="text"></p>
-            <p>Prénom <br><input size="50" placeholder="Arthur" name="lastname" type="text"></p>
-            <p>Date de naissance <br><input  name="birth" type="date"></p>
-			<p>Email <br><input  size="50" placeholder="arthur.martin@gmail.com" name="email" type="email"></p>
-			<p>Mot de passe <br><input size="50"  placeholder="****" name="password" type="password"></p>
-			<div class="centre"> <input class="submit" type="submit" value="Créer un compte"> 
+            <div class="form">
+				<label for="lastname">Nom</label>
+				<input id="lastname" name="lastname" type="text" placeholder="Martin" required>
+			</div>
+            <div class="form">
+				<label for="firstname">Prénom</label>
+				<input id="firstname" name="firstname" type="text" placeholder="Arthur" required>
+			</div>
+            <div class="form">
+				<label for="birth">Date de naissance</label>
+				<input id="birth" name="birth" type="date" required>
+			</div>
+			<div class="form">
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" placeholder="arthur.martin@gmail.com" required>
+			</div>
+			<div class="form">
+				<label for="password">Mot de passe</label>
+				<input id="password" name="password" type="password" placeholder="*******">
+			</div>
+			<div id="submit" class="form"> 
+				<input type="submit" value="Créer un compte">
+			</div>
 		</form>
-		<p>Vous avez déjà un compte ? <a style="color:rgb(240, 9, 124)" href="page_connexion.php">Connectez-vous</a></p>
-		</div>  
-		</div>
+			<p>Vous avez déjà un compte ? <a href="page_connexion.php">Connectez-vous</a></p>
 		</fieldset>
+		</div>
 	</main>
 </body>
 
