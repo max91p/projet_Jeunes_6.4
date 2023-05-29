@@ -54,6 +54,7 @@
 			$nom_jeune=$_SESSION["nom_jeune"];
 			$prenom_jeune=$_SESSION["prenom_jeune"];
 			$email_jeune=$_SESSION["email_jeune"];
+			$liste_demande_total=array();
 			while (!feof($fichier)){
 				$ligne_entiere="";
 				$fin=false;
@@ -75,6 +76,7 @@
 				}
 				if (strlen($ligne_entiere)>2){
 					$ligne_decoupee=explode('|',$ligne_entiere);
+					array_push($liste_demande_total,$ligne_decoupee);
 					$id_ligne=$ligne_decoupee[0];
 					$nom_ligne=$ligne_decoupee[1];
 					$prenom_ligne=$ligne_decoupee[2];
@@ -91,9 +93,11 @@
 					}
 				}
 			}
+			$_SESSION['liste_demande']=$liste_demande_total;
 			fclose($fichier);
+		}else{
+			echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 		}
-		echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 	?>
 </body>
 
