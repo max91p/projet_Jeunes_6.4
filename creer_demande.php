@@ -29,7 +29,8 @@
 		if(isset($_POST["submit"])) {
             $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $id="";
-            for ($i = 0; $i < 10; $i++) {
+            $id .= $caracteres[rand(10,strlen($caracteres)-1)];
+            for ($i = 0; $i < 9; $i++) {
                 $id .= $caracteres[rand(0,strlen($caracteres)-1)];
             }
 			enregistrer_demande($id);
@@ -48,7 +49,8 @@
             $prenom_jeune=$_SESSION["prenom_jeune"];
             $email_jeune=$_SESSION["email_jeune"];
             $fichier=fopen("references.txt","a");
-            $texte="$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|En attente\n\n\n";
+            $date=date("d/m/Y");
+            $texte="$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|En attente\n\n\n";
             fwrite($fichier,$texte);
 			fclose($fichier);
         }
@@ -82,8 +84,8 @@
             $mail->Subject = "Jeunes 6.4 : Demande de référence pour $prenom_jeune $nom_jeune"; 
             $bodyContent = "Bonjour $prenom_referent $nom_referent,<br><br>$prenom_jeune $nom_jeune vous demande d'être son référent pour son expérience dans le milieu \"$milieu\" via la plateforme Jeunes 6.4.<br><br>
             JEUNES 6.4 est un dispositif de valorisation de l’engagement des jeunes en Pyrénées-Atlantiques soutenu par l’Etat, le Conseil général, le conseil régional, les CAF Béarn-Soule et Pays Basque, la MSA, l’université de Pau et des pays de l’Adour, la CPAM.<br><br>
-            Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/consulter_reference_referent.php/?reference_id=$id<br><br>
-            (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_reference_referent.php et rajouter /?reference_id=$id derrière)
+            Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/consulter_reference_referent.php/?reference_id=$id<br>
+            (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_reference_referent.php et rajouter /?reference_id=$id derrière)<br><br>
             Cordialement,<br><br>L'équipe de Jeunes 6.4"; 
             $mail->Body= $bodyContent;
             $res=$mail->send();
@@ -93,7 +95,7 @@
 	?>
 	<header>
 		<div align=left style="vertical-align: middle;">
-            <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
+            <a href=page_accueil2.html><img style="max-height: 100px;" src="media/logo.png" alt="Logo site"></a>
 		</div>
 		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
 			<a href="voir_profil.php" style="vertical-align: middle;font-size: 30px;">Jeune</a>
