@@ -49,12 +49,12 @@
 				<a style='font-size:25px;' href='selection_exporter_ref.php'>Exporter des références</a>
 			</div>
 			<h2 style='text-align:center;'>Vos références</h2>";
+		$liste_demande_total=array();
 		if (file_exists("references.txt")){
 			$fichier=fopen("references.txt","r");
 			$nom_jeune=$_SESSION["nom_jeune"];
 			$prenom_jeune=$_SESSION["prenom_jeune"];
 			$email_jeune=$_SESSION["email_jeune"];
-			$liste_demande_total=array();
 			while (!feof($fichier)){
 				$ligne_entiere="";
 				$fin=false;
@@ -76,12 +76,12 @@
 				}
 				if (strlen($ligne_entiere)>2){
 					$ligne_decoupee=explode('|',$ligne_entiere);
-					array_push($liste_demande_total,$ligne_decoupee);
 					$id_ligne=$ligne_decoupee[0];
 					$nom_ligne=$ligne_decoupee[1];
 					$prenom_ligne=$ligne_decoupee[2];
 					$email_ligne=$ligne_decoupee[3];
 					if ($nom_ligne==$nom_jeune && $prenom_ligne==$prenom_jeune && $email_ligne==$email_jeune){
+						array_push($liste_demande_total,$ligne_decoupee);
 						echo 
 						"<table id='$id_ligne' onclick='clic_ref(this)' style='border:2px solid black; align:center;margin-right:30%;margin-left:30%;width:40%;padding:5px;'>
 							<tr style='font-size:20px;'>
@@ -93,11 +93,14 @@
 					}
 				}
 			}
-			$_SESSION['liste_demande']=$liste_demande_total;
+			if (count($liste_demande_total)==0){
+				echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
+			}
 			fclose($fichier);
 		}else{
 			echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 		}
+		$_SESSION['liste_demande']=$liste_demande_total;
 	?>
 </body>
 
