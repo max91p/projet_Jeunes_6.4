@@ -56,12 +56,10 @@ foreach ($data as $item) {
 			</div>
 			
 			<a href="accueil_compte.html"></a>
-		<p>Votre compte</p>
-		<p class='title'>Nom<br><?php echo $lastname?></p>
-		<p class='title'>Prénom<br><?php echo $firstname?></p>
-		<p class='title'>Date de naissance<br><?php echo $birth?></p>
-		<p class='title'>Email<br><?php echo $username?></p>
-		<a href="page_modifier_compte.php">Modifier</a>
+		<p class='title'>Nom<br></p><p><?php echo $lastname?></p>
+		<p class='title'>Prénom<br></p><p><?php echo $firstname?></p>
+		<p class='title'>Date de naissance<br></p><p><?php echo $birth?></p>
+		<p class='title'>Email<br></p><p><?php echo $username?></p>
 			
 		</div>
 		
