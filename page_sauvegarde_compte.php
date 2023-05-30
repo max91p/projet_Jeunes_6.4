@@ -5,33 +5,59 @@ error_reporting(E_ALL);
 
 session_start();
 
-$firstname = trim($_POST['firstname']);
-$lastname = trim($_POST['lastname']);
-$birth = trim($_POST['birth']);
-$username = trim($_POST['email']);
-$password = trim($_POST['password']);
+//enlever les caractères invisibles de fin et de début dans une saisie
+$firstname  = trim($_POST['firstname']);
+$lastname   = trim($_POST['lastname']);
+$birth      = trim($_POST['birth']);
+$username   = trim($_POST['username']);
+$password   = trim($_POST['password']);
 
  // Vérification des champs vides  
  if($firstname == '' || $lastname == '' || $birth == '' || $username == '' || $password == '')
  {  
-    $_SESSION['message'] = "Veuillez remplir tous les champs du formulaire.";
+    $_SESSION['message'] = "Veuillez remplir tous les champs du formulaire !";
     header('Location: page_creation_compte.php');
     exit();
  }  
- else {
-     echo "Le formulaire a été soumis avec succès.";
- }
 
-$csv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . $password . "\n";
+ $fp = fopen('people.csv', 'r');
+ 
+ while(feof($fp) == false) {
+ 
+     $csv = fgets($fp);
+     var_dump($csv);
+     
+     //prend une chaine csv et le transforme en tableau
+     $user = str_getcsv($csv, ';');
+ 
+     if ($username == $user[3]) {
+         echo 'utilisateur déjà existant';
+         fclose($fp);
+         
+         header('Location: page_creation_compte.php');
+         exit();
+         break;
+     
+        // break;
+        // exit();
+     }
+ }
+ 
+ fclose($fp);
+ 
+
+$csv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . password_hash($password, null, []) . "\n";
 
 //écriture dans le fichier csv des données entrées
+//ajout des données en fin de fichier avec FILE_APPEND
 $data = file_put_contents('people.csv', $csv, FILE_APPEND);
 
-$_SESSION["nom_jeune"] = $lastname;
+$_SESSION['nom_jeunel'] = $lastname;
 $_SESSION["prenom_jeune"] = $firstname;
 $_SESSION["email_jeune"] = $username;
 $_SESSION["naissance"] = $birth;
 $_SESSION["mdp"] = $password;
+
 header('Location: accueil_compte.html');
 exit();
 ?>
