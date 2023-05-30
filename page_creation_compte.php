@@ -6,7 +6,7 @@
 	<title>Création Compte</title>
 </head>
 <body>
-<header>
+	<header>
 		<div id="logo">
 		    <a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
 		</div>

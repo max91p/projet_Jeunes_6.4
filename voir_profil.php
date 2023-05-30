@@ -54,13 +54,14 @@ foreach ($data as $item) {
 					<a href="page_modifier_compte.php"><img id="edit" src="./media/edit.png" alt="edit"></a>
 				</div>
 			</div>
-			
-			<a href="accueil_compte.html"></a>
-		<p class='title'>Nom<br></p><p><?php echo $lastname?></p>
-		<p class='title'>Prénom<br></p><p><?php echo $firstname?></p>
-		<p class='title'>Date de naissance<br></p><p><?php echo $birth?></p>
-		<p class='title'>Email<br></p><p><?php echo $username?></p>
-			
+			<p class='title'>Nom</p>
+			<p><?php echo $lastname?></p>
+			<p class='title'>Prénom</p>
+			<p><?php echo $firstname?></p>
+			<p class='title'>Date de naissance</p>
+			<p><?php echo $birth?></p>
+			<p class='title'>Email</p>
+			<p><?php echo $username?></p>
 		</div>
 		
 	</main>

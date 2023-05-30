@@ -2,76 +2,82 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+	<link rel="stylesheet" href="./style/page_modifier_compte.css">
+	<title>Modifier mon compte</title>
 </head>
-<body style="margin: 0;">
+<body>
 	<header>
-		<div align=left style="vertical-align: middle;">
-		    <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
+		<div id="logo">
+		    <a href="page_accueil2.html"><img src="./media/logo.png" alt="Logo site"></a>
 		</div>
-		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
-			<a style="vertical-align: middle;font-size: 30px;">Jeune</a>
+		<div id="texte">Je donne de la valeur à mon engagement</div>
+		<div id="bouton">
+			<a href="voir_profil.php">Jeune</a>
 		</div>
 	</header>
 	<main>
+<?php
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 
-	<?php
+	session_start();
+	$username = $_SESSION['email'];
+	//session_unset();
+	//session_destroy();
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+	echo 'username' . $username;
+	var_dump($username);
 
-session_start();
-$username = $_SESSION['email'];
-//session_unset();
-//session_destroy();
+	// récupération de toutes les lignes du fchier dans un tableau
+	$data = file('people.csv');
 
-echo 'username' . $username;
-var_dump($username);
+	//echo $username;
+	//débug
+	//var_dump($_POST);
 
-// récupération de toutes les lignes du fchier dans un tableau
-$data = file('people.csv');
+	foreach ($data as $item) {
+		//on décode chaque ligne comme étant du csv
+		$csv = str_getcsv($item, ';');
+		//var_dump($csv);
+		if ($username == $csv[3]) {
 
-//echo $username;
-//débug
-//var_dump($_POST);
-
-foreach ($data as $item) {
-	//on décode chaque ligne comme étant du csv
-	$csv = str_getcsv($item, ';');
-	//var_dump($csv);
-	if ($username == $csv[3]) {
-
-		$lastname = $csv[0];
-		$firstname = $csv[1];
-		$birth = $csv[2];
-		$username = $csv[3];
-		$password = $csv[4];
-
-	//echo "utilisateur trouvé";
-		break;
+			$lastname = $csv[0];
+			$firstname = $csv[1];
+			$birth = $csv[2];
+			$username = $csv[3];
+			$password = $csv[4];
+			//echo "utilisateur trouvé";
+			break;
+		}
 	}
-}
 ?>
+	<div id="content">
+		<fieldset>
+		<legend>Modifier mon compte</legend>
 		<form action="modification_compte.php" method="post">
-            <p>Nom <input value=<?php echo $lastname; ?> name="lastname" type="text"></p>
-            <p>Prénom <input value=<?php echo $firstname; ?> name="firstname" type="text"></p>
-            <p>Date de naissance <input value=<?php echo $birth; ?> name="birth" type="date"></p>
-	<!--<p>Email <input value="martin.dupont@gmail.com" name="email" type="email"></p>-->
-			<p>Mot de passe <input value=<?php echo $password; ?> name="password" type="password"></p>
-			<input type="submit" value="Enregistrer">
+            <div class="form">
+				<label for="lastname">Nom</label>
+				<input id="lastname" value="<?php echo $lastname; ?>" name="lastname" type="text" >
+			</div>
+            <div class="form">
+				<label for="firstname">Prénom</label>
+				<input id="firstname" value="<?php echo $firstname; ?>" name="firstname" type="text">
+			</div>
+            <div class="form">
+				<label for="birth">Date de naissance</label>
+				<input id="birth" value="<?php echo $birth; ?>" name="birth" type="date">
+			</div>
+			<div class="form">
+				<label for="password">Mot de passe</label>
+				<input id="password" value="<?php echo $password; ?>" name="password" type="password">
+			</div>
+			<div id="submit" class="form"> 
+				<input type="submit" value="Enregistrer">
+			</div>
 		</form>
+		</fieldset>
+	</div>
 	</main>
 </body>
 

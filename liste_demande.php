@@ -5,18 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+	<link rel="stylesheet" href="./style/liste_demande.css">
+	<title>Liste des demandes de références</title>
     <script>
         function clic_ref(table){
             var id=table.getAttribute("id");
@@ -31,24 +21,34 @@
         }
     </script>
 </head>
-<body style="margin: 0;">
+<body>
 	<?php
 		echo 
 		"<header>
-			<div align=left style='vertical-align: middle;'>
-				<a href=page_accueil2.html><img style='max-height: 100px;' src='media/logo.png' alt='Logo site'></a>
+			<div id='logo'>
+				<a href='page_accueil2.html'><img src='./media/logo.png' alt='Logo site'></a>
 			</div>
-			<div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-				<a href='voir_profil.php' style='vertical-align: middle;font-size: 30px;'>Jeune</a>
+			<div id='texte'>Je donne de la valeur à mon engagement</div>
+			<div id='bouton'>
+				<a href='voir_profil.php'>Jeune</a>
 			</div>
-		</header><br><br>
+		</header>
 		<main>
-			<a href='accueil_compte.html'><--</a>
-			<div style='position:absolute;right:50px;top:130px;'>
-				<a style='font-size:25px;' href='selection_envoi_ref.php'>Envoyer des références</a><br><br>
-				<a style='font-size:25px;' href='selection_exporter_ref.php'>Exporter des références</a>
+			<div id='content'>
+				<div id='title'>Vos références</div>
+			
+				<div id='right'>
+					<div class='lien'>
+						<a href='selection_envoi_ref.php'>Envoyer des références</a>
+					</div>
+					<div class='lien'>
+						<a href='selection_exporter_ref.php'>Exporter des références</a>
+					</div>
+				</div>
 			</div>
-			<h2 style='text-align:center;'>Vos références</h2>";
+
+			<a href='accueil_compte.html'><img id='home' src='./media/home.png' alt='home'></a>
+			";
 		$liste_demande_total=array();
 		if (file_exists("references.txt")){
 			$fichier=fopen("references.txt","r");
@@ -94,14 +94,25 @@
 				}
 			}
 			if (count($liste_demande_total)==0){
-				echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
+				echo "<div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 			}
 			fclose($fichier);
 		}else{
-			echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
+			echo "<div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 		}
 		$_SESSION['liste_demande']=$liste_demande_total;
 	?>
 </body>
+<script>
+	// recupère la largeur du navigateur et cache le texte si la largeur est inférieure à 865px
+	window.addEventListener('resize', function() {
+		var browserWidth = window.innerWidth;
 
+		if (browserWidth < 865) { 
+			document.getElementById('texte').style.display = 'none';
+		} else {
+			document.getElementById('texte').style.display = 'inline-block';
+		}
+	});
+</script>
 </html>

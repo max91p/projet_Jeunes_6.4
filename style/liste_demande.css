@@ -29,6 +29,7 @@ body{
     width: 200px;
     
 }
+
 #texte{
     display: inline-block;
     position:relative;
@@ -56,13 +57,13 @@ body{
     color: white;
     background: rgb(240, 9, 124);
     box-sizing: border-box;
-    cursor: pointer;
     border-radius: 15px;
     font-size: 30px;
     display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
 }
 #bouton:before {
     height: 0%;
@@ -71,28 +72,46 @@ body{
 #bouton:hover{
     box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),-4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2),inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
 }
+#home{
+    position: absolute;
+    left: 0;
+    top: 160px;
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+    cursor: pointer;
+}
 
-
-#content{
-    position:relative;
-    width: 100%;
+#right{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 220px;
     text-align: center;
 }
 .lien{
-    max-width: 690px;
-    max-height: 300px;
-    line-height: 80px;
-    position: relative;
-    margin: 0 auto;
-    background-color: rgb(240, 9, 124);
     color: white;
-    font-size: 40px;
+    background-color:rgb(240, 9, 124) ;
+    margin-bottom: 20px;
+    font-size: 19px;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 30px;
-    margin-top: 110px;
+    height: 40px;
+    line-height: 40px;
     cursor: pointer;
-
 }
 .lien:hover{
-    outline: 3px solid rgb(240, 9, 124);
-    outline-offset: 3px;
+    outline: 2px solid rgb(240, 9, 124);
+    outline-offset: 2px;
+}
+#title{
+    margin: auto;
+    margin-top:20px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(240, 9, 124);
+    text-align: center;
+    width: 900px;
 }
