@@ -28,9 +28,8 @@ foreach ($data as $item) {
     //if ($username == $csv[3] && $password == $csv[4]) {
     if ($username == $csv[3] && password_verify($password, $csv[4]) == true) {
         $_SESSION['email'] = $username;
-        $_SESSION["prenom_jeune"] = $csv[0];
-        $_SESSION["nom_jeune"] = $csv[1];
-        //$_SESSION["email_jeune"] = $username;
+        $_SESSION["prenom"] = $csv[0];
+        $_SESSION["nom"] = $csv[1];
         $_SESSION["naissance"] = $csv[2];
         $_SESSION["mdp"] = $password;
         ?>
