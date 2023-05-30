@@ -25,12 +25,51 @@
 		</div>
 	</header>
 	<main>
-		<form action="modifier_info_compte.php" method="post">
-            <p>Nom <input value="Dupont" name="nom" type="text"></p>
-            <p>Prénom <input value="Martin" name="prenom" type="text"></p>
-            <p>Date de naissance <input value="1970-01-01" name="naissance" type="date"></p>
-			<p>Email <input value="martin.dupont@gmail.com" name="email" type="email"></p>
-			<p>Mot de passe <input value="password" name="mdp" type="password"></p>
+
+	<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$username = $_SESSION['email'];
+//session_unset();
+//session_destroy();
+
+echo 'username' . $username;
+var_dump($username);
+
+// récupération de toutes les lignes du fchier dans un tableau
+$data = file('people.csv');
+
+//echo $username;
+//débug
+//var_dump($_POST);
+
+foreach ($data as $item) {
+	//on décode chaque ligne comme étant du csv
+	$csv = str_getcsv($item, ';');
+	//var_dump($csv);
+	if ($username == $csv[3]) {
+
+		$lastname = $csv[0];
+		$firstname = $csv[1];
+		$birth = $csv[2];
+		$username = $csv[3];
+		$password = $csv[4];
+
+	//echo "utilisateur trouvé";
+		break;
+	}
+}
+?>
+		<form action="modification_compte.php" method="post">
+            <p>Nom <input value=<?php echo $lastname; ?> name="lastname" type="text"></p>
+            <p>Prénom <input value=<?php echo $firstname; ?> name="firstname" type="text"></p>
+            <p>Date de naissance <input value=<?php echo $birth; ?> name="birth" type="date"></p>
+	<!--<p>Email <input value="martin.dupont@gmail.com" name="email" type="email"></p>-->
+			<p>Mot de passe <input value=<?php echo $password; ?> name="password" type="password"></p>
 			<input type="submit" value="Enregistrer">
 		</form>
 	</main>
