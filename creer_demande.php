@@ -45,9 +45,9 @@
             $nom_referent=$_POST["nom_referent"];
             $prenom_referent=$_POST["prenom_referent"];
             $email_referent=$_POST["email_referent"];
-            $nom_jeune=$_SESSION["nom_jeune"];
-            $prenom_jeune=$_SESSION["prenom_jeune"];
-            $email_jeune=$_SESSION["email_jeune"];
+            $nom_jeune=$_SESSION["nom"];
+            $prenom_jeune=$_SESSION["prenom"];
+            $email_jeune=$_SESSION["email"];
             $fichier=fopen("references.txt","a");
             $date=date("d/m/Y");
             $texte="$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|En attente\n\n\n";
@@ -63,9 +63,9 @@
             $nom_referent=$_POST["nom_referent"];
             $prenom_referent=$_POST["prenom_referent"];
             $email_referent=$_POST["email_referent"];
-            $nom_jeune=$_SESSION["nom_jeune"];
-            $prenom_jeune=$_SESSION["prenom_jeune"];
-            $email_jeune=$_SESSION["email_jeune"];
+            $nom_jeune=$_SESSION["nom"];
+            $prenom_jeune=$_SESSION["prenom"];
+            $email_jeune=$_SESSION["email"];
             $mail = new PHPMailer; 
             $mail->CharSet = "UTF-8";
             // Server settings 

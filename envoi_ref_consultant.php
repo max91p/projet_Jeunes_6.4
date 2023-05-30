@@ -7,8 +7,8 @@
     require 'PHPMailer/src/PHPMailer.php'; 
     require 'PHPMailer/src/SMTP.php';
     if(isset($_POST["envoyer_mail_consultant"])) {
-        $nom_jeune=$_SESSION['nom_jeune'];
-        $prenom_jeune=$_SESSION['prenom_jeune'];
+        $nom_jeune=$_SESSION['nom'];
+        $prenom_jeune=$_SESSION['prenom'];
         $liste_ids=$_SESSION['nouv_str_ids'];
         $nom_consultant=$_POST['nom_consultant'];
         $prenom_consultant=$_POST['prenom_consultant'];
