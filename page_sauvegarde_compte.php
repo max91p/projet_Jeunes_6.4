@@ -52,9 +52,9 @@ $csv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . pas
 //ajout des données en fin de fichier avec FILE_APPEND
 $data = file_put_contents('people.csv', $csv, FILE_APPEND);
 
-$_SESSION['nom_jeunel'] = $lastname;
-$_SESSION["prenom_jeune"] = $firstname;
-$_SESSION["email_jeune"] = $username;
+$_SESSION['nom'] = $lastname;
+$_SESSION["prenom"] = $firstname;
+$_SESSION["email"] = $username;
 $_SESSION["naissance"] = $birth;
 $_SESSION["mdp"] = $password;
 
