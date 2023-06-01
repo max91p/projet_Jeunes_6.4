@@ -2,18 +2,8 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-        <style>
-            header{
-                width: 100%;
-                height: 100px;
-                left: 0px;
-                top: 0px;
-                background: #D9D9D9;
-            }
-            a{
-                all: unset;
-            }
-        </style>
+        <link rel="stylesheet" href="./style/choix_exportation.css">
+    
         <script>
             function clic_ref(table){
                 var id=table.getAttribute("id");
@@ -30,26 +20,37 @@
     </head>
     <body style="margin: 0;">
         <header>
-            <div align=left style="vertical-align: middle;">
-                <a href=page_accueil2.html><img style="max-height: 100px;" src="logo.png" alt="Logo site"></a>
-            </div>
-            <div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
-                <a href="voir_profil.php" style="vertical-align: middle;font-size: 30px;">Jeune</a>
-            </div>
+        <div id="logo">
+		    <a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
+			
+		</div>
+		<div id="texte">Je donne de la valeur à mon engagement</div>
+		
+		<div id="bouton">
+			<a href="voir_profil.php">Jeune</a>
+		</div>
         </header>
         <br>
         <main>
+           
+                <div id="content">
+            <fieldset>
+                <legend>Choisissez le format </legend>
             <a href="selection_exporter_ref.php"><--</a>
-            <h2 style="text-align:center;">Choisissez le format</h2>
-            <form>
-                <div style="align:center;border:2px solid black;margin-left:45%;margin-right:45%;padding:5px;">
-                    <input type="radio" name="format" value="pdf" checked> Format PDF<br>
-                    <input type="radio" name="format" value="html" checked> Format HTML
-                </div>
-                <br>
-                <br>
-                <div ALIGN=center> 
-                    <input style="font-size:20px;" type="submit" value="Valider"><!--Appel d'une fonction qui crée le fichier et le télécharge ?-->
+            
+            <div class="form">
+                <input id="pdf" name="format" type="radio" >
+                <label for="pdf">Format PDF</label>
+            </div>
+
+            <div class="form">
+                <input id="html" name="format" type="radio" >
+                <label for="html">Format HTML</label>
+            </div>
+            <div id="submit" class="form"> 
+				<input type="submit" value="Valider"> <!--Appel d'une fonction qui crée le fichier et le télécharge ?-->
+			</div>
+                
                 </div>
             </form>  
         </main>
