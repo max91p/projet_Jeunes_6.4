@@ -64,13 +64,7 @@ body{
     padding-right: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
-#bouton:before {
-    height: 0%;
-    width: 2px;
-}
-#bouton:hover{
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),-4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2),inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
-}
+
 
 fieldset {
     border:2px solid #ABDA4E; 
