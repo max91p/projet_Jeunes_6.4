@@ -5,18 +5,7 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-        <style>
-            header{
-                width: 100%;
-                height: 100px;
-                left: 0px;
-                top: 0px;
-                background: #D9D9D9;
-            }
-            a{
-                all: unset;
-            }
-        </style>
+        <link rel="stylesheet" href="./style/selection_envoi_ref.css">
         <script>
             function clic_ref(table){
                 var id=table.getAttribute("id");
@@ -31,21 +20,21 @@
             }
         </script>
     </head>
-    <body style="margin: 0;">
+    <body>
             <?php
                 echo 
                 "<header>
-                    <div align=left style='vertical-align: middle;'>
-                        <a href=page_accueil2.html><img style='max-height: 100px;' src='media/logo.png' alt='Logo site'></a>
-                    </div>
-                    <div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-                        <a href='voir_profil.php' style='vertical-align: middle;font-size: 30px;'>Jeune</a>
-                    </div>
-                </header>
-                <br>
+			        <div id='logo'>
+				        <a href='page_accueil2.html'><img src='media/logo.png' alt='Logo site'></a>
+			        </div>
+			        <div id='texte'>Je donne de la valeur à mon engagement</div>
+			        <div id='bouton'>
+				        <a href='voir_profil.php'>Jeune</a>
+			        </div>
+		        </header>
                 <main>
-                    <a href='liste_demande.php'><--</a>
-                    <h2 style='text-align:center;'>Sélectionner les références que vous souhaitez envoyer</h2>";
+                    <a href='liste_demande.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
+                    <p>Sélectionner les références que vous souhaitez envoyer</p>";
                 $liste_demande=$_SESSION['liste_demande'];
                 if (count($liste_demande)==0){
                     echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";

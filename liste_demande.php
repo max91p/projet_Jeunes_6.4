@@ -87,10 +87,10 @@
 						}
 						array_push($liste_demande_total,$ligne_decoupee);
 						echo 
-						"<table id='$id_ligne' onclick='clic_ref(this)' style='border:2px solid black; align:center;margin-right:30%;margin-left:30%;width:40%;padding:5px;'>
-							<tr style='font-size:20px;'>
+						"<table id='$id_ligne' class='reference' onclick='clic_ref(this)'>
+							<tr>
 								<td>Milieu : $ligne_decoupee[4]<br>Référent(e) : <span class='nom_referent_liste_ref'>$ligne_decoupee[10] $ligne_decoupee[9]</span><br>Date d'envoi : <span class='date_experience_ref_liste'>$ligne_decoupee[12]</span></td>
-								<td style='vertical-align:top;text-align:right;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[13]</span></td>
+								<td style='vertical-align:top;width:190px;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[13]</span></td>
 							</tr>
 						</table>
 						<br>";
