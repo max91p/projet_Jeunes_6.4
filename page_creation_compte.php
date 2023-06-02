@@ -35,7 +35,7 @@
 			</div>
 			<div class="form">
 				<label for="email">Email</label>
-				<input id="email" name="email" type="email" placeholder="arthur.martin@gmail.com" required>
+				<input id="email" name="username" type="email" placeholder="arthur.martin@gmail.com" required>
 			</div>
 			<div class="form">
 				<label for="password">Mot de passe</label>
