@@ -52,9 +52,9 @@
 		$liste_demande_total=array();
 		if (file_exists("references.txt")){
 			$fichier=fopen("references.txt","r");
-			$nom_jeune=$_SESSION["nom_jeune"];
-			$prenom_jeune=$_SESSION["prenom_jeune"];
-			$email_jeune=$_SESSION["email_jeune"];
+			$nom_jeune=$_SESSION["nom"];
+			$prenom_jeune=$_SESSION["prenom"];
+			$email_jeune=$_SESSION["email"];
 			while (!feof($fichier)){
 				$ligne_entiere="";
 				$fin=false;
@@ -80,13 +80,17 @@
 					$nom_ligne=$ligne_decoupee[1];
 					$prenom_ligne=$ligne_decoupee[2];
 					$email_ligne=$ligne_decoupee[3];
+					$couleur="grey";
 					if ($nom_ligne==$nom_jeune && $prenom_ligne==$prenom_jeune && $email_ligne==$email_jeune){
+						if ($ligne_decoupee[13]=="Répondu"){
+							$couleur="green";
+						}
 						array_push($liste_demande_total,$ligne_decoupee);
 						echo 
 						"<table id='$id_ligne' onclick='clic_ref(this)' style='border:2px solid black; align:center;margin-right:30%;margin-left:30%;width:40%;padding:5px;'>
 							<tr style='font-size:20px;'>
-								<td>Milieu : <span class='milieu_experience_liste'>$ligne_decoupee[4]</span><br>Référent(e) : <span class='nom_referent_liste_ref'>$ligne_decoupee[10] $ligne_decoupee[9]</span><br>Date d'envoi : <span class='date_experience_ref_liste'>$ligne_decoupee[12]</span></td>
-								<td style='vertical-align:top;text-align:right;'>Statut : <span class='statut_ref'>$ligne_decoupee[13]</span></td>
+								<td>Milieu : $ligne_decoupee[4]<br>Référent(e) : <span class='nom_referent_liste_ref'>$ligne_decoupee[10] $ligne_decoupee[9]</span><br>Date d'envoi : <span class='date_experience_ref_liste'>$ligne_decoupee[12]</span></td>
+								<td style='vertical-align:top;text-align:right;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[13]</span></td>
 							</tr>
 						</table>
 						<br>";
