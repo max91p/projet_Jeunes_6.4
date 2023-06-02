@@ -16,18 +16,18 @@
         $milieu=$_SESSION['milieu'];
         echo 	
 				"<header>
-					<div id="logo">
-						<a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
+					<div id='logo'>
+						<a href=page_accueil2.html><img src='./media/logo.png' alt='Logo site'></a>
 						
 					</div>
-					<div id="texte">Je confirme la valeur de ton engagement</div>
+					<div id='texte'>Je confirme la valeur de ton engagement</div>
 					
-					<div id="bouton">
-						<a href="voir_profil.php">Referent </a>
+					<div id='bouton'>
+						<a href='voir_profil.php'>Referent </a>
 					</div>
 				</header>
 				<main>
-					<div id="content">
+					<div id='content'>
 					<fieldset>
 					    <h2>Merci !</h2>
                         <p>Vos ajouts sur cette référence dans le milieu \"$milieu\" ont été envoyés à $prenom_jeune $nom_jeune par mail.<br><br>
