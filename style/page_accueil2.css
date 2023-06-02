@@ -94,14 +94,14 @@ border-top: #FFC0CB ;
 
 .t8{
 border: 4px solid;
-border-color: green;
+border-color: #ABDA4E;
 padding: 5px;
-background-color: green;
+background-color: #ABDA4E;
 border-bottom: none;
 }
 
 .t7{
-border: 4px solid green;
+border: 4px solid #ABDA4E;
 padding: 5px;
 background-color: white ;
 border-top: white ;
@@ -109,14 +109,14 @@ border-top: white ;
 
 .t6{
 border: 4px solid;
-border-color: blue;
+border-color: #029ec6;
 padding: 5px;
-background-color: blue;
+background-color: #029ec6;
 border-bottom: none;
 }
 
 .t5{
-border: 4px solid blue;
+border: 4px solid #029ec6;
 padding: 5px;
 background-color: white ;
 border-top: white ;
