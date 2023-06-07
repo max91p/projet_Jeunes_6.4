@@ -23,7 +23,7 @@
 					<div id='texte'>Je confirme la valeur de ton engagement</div>
 					
 					<div id='bouton'>
-						<a href='voir_profil.php'>Referent </a>
+						<a>Referent </a>
 					</div>
 				</header>
 				<main>
