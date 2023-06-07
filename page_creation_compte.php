@@ -13,7 +13,7 @@
 		<div id="texte">Je donne de la valeur à mon engagement</div>
 
 		<div id="bouton">
-			<a>Jeune</a>
+			Jeune
 		</div>
 	</header>
 	<main>
@@ -50,5 +50,16 @@
 		</div>
 	</main>
 </body>
+<script>
+	// recupère la largeur du navigateur et cache le texte si la largeur est inférieure à 865px
+	window.addEventListener('resize', function() {
+		var browserWidth = window.innerWidth;
 
+		if (browserWidth < 865) { 
+			document.getElementById('texte').style.display = 'none';
+		} else {
+			document.getElementById('texte').style.display = 'inline-block';
+		}
+	});
+</script>
 </html>
