@@ -42,8 +42,8 @@
 		//var_dump($csv);
 		if ($username == $csv[3]) {
 
-			$lastname = $csv[0];
-			$firstname = $csv[1];
+			$lastname = $csv[1];
+			$firstname = $csv[0];
 			$birth = $csv[2];
 			$username = $csv[3];
 			$password = $csv[4];
