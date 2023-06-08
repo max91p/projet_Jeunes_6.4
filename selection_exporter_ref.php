@@ -28,17 +28,17 @@
                 }else{
                     $demandes_repondues=array();
                     for ($i=0;$i<count($liste_demande);$i++){
-                        if ($liste_demande[$i][13]=="Répondu"){
+                        if ($liste_demande[$i][11]=="Répondu"){
                             array_push($demandes_repondues,$liste_demande[$i]);
                             if (count($demandes_repondues)==1){
                                 echo "<form action='choix_exportation.php' method='post'>";
                             }
                             $id=$liste_demande[$i][0];
-                            $milieu=$liste_demande[$i][4];
-                            $nom_ref=$liste_demande[$i][9];
-                            $prenom_ref=$liste_demande[$i][10];
-                            $statut=$liste_demande[$i][13];
-                            $date=$liste_demande[$i][12];
+                            $milieu=$liste_demande[$i][2];
+                            $nom_ref=$liste_demande[$i][7];
+                            $prenom_ref=$liste_demande[$i][8];
+                            $statut=$liste_demande[$i][11];
+                            $date=$liste_demande[$i][10];
                             echo 
                             "<table style='position:absolute;left:27%;'>
                                 <td><input style='width:100%;' name='ref_$id' type='checkbox'>

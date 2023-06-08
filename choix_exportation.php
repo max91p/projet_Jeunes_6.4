@@ -4,13 +4,11 @@
 <!DOCTYPE html>
 <html>
     <?php
-        require_once 'dompdf/autoload.inc.php';
-        use Dompdf\Dompdf;
         $ref_a_exporter=array();
         $liste_demande=$_SESSION['liste_demande'];
         for ($i=0;$i<count($liste_demande);$i++){
             $id=$liste_demande[$i][0];
-            if ($liste_demande[$i][13]=="Répondu" && isset($_POST["ref_$id"])){
+            if ($liste_demande[$i][11]=="Répondu" && isset($_POST["ref_$id"])){
                 $selection=$_POST["ref_$id"];
                 if ($selection=="on"){
                     array_push($ref_a_exporter,$liste_demande[$i]);
@@ -56,7 +54,7 @@
                         <label for="html">Format HTML</label>
                     </div>
                     <div id="submit" class="form"> 
-                        <input type="submit" value="Exporter" name="bouton_exporter"> <!--Appel d'une fonction qui crée le fichier et le télécharge ?-->
+                        <input type="submit" value="Exporter" name="bouton_exporter">
                     </div>
                     </fieldset>
                 </form> 

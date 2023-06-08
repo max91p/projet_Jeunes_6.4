@@ -64,9 +64,8 @@
 				if ($toutes_trouve==false){
 					echo "Une de ces références n'existe pas";
 				}else{
-					$nom_jeune=$liste_references[0][1];
-					$prenom_jeune=$liste_references[0][2];
-					$email_jeune=$liste_references[0][3];
+					$email_jeune=$liste_references[0][1];
+					$infos_jeune=recup_infos_jeune($email_jeune);
 					echo "<main>
 					<h2>Consultez les informations et les références du candidat</h2>
 					<table style='width:98%;margin:1%;'>
@@ -77,17 +76,17 @@
 						<tr>
 							<td style='margin:0;vertical-align:top;padding-right:5px;'><div style='padding:5px 15px 1% 1%;border:2px solid black;height:100%;'>
 									<u>Informations du candidat :</u><br><br>
-									Nom :<br> $nom_jeune <br><br>
-									Prénom : <br> $prenom_jeune <br><br>
+									Nom :<br> $infos_jeune[1] <br><br>
+									Prénom : <br> $infos_jeune[0] <br><br>
 									Email : <br> $email_jeune <br>
 								</div></td>
 							<td rowspan='2' style='margin:0;vertical-align:top;padding-left:5px;'><div style='padding:5px 15px 1% 1%;border:2px solid black;height:100%;'>
 								<u>Références du candidat :</u><br><br>";
 					for ($i=0;$i<count($liste_references);$i++){
-						$nom_ref=$liste_references[$i][9];
-						$prenom_ref=$liste_references[$i][10];
-						$date=$liste_references[$i][12];
-						$milieu=$liste_references[$i][4];
+						$nom_ref=$liste_references[$i][7];
+						$prenom_ref=$liste_references[$i][8];
+						$date=$liste_references[$i][10];
+						$milieu=$liste_references[$i][2];
 						echo 	"<div style='border:2px solid black; align:center;width:99%;padding:5px;'>
 									Milieu : $milieu<br><br>
 									Référent(e) : $prenom_ref $nom_ref<br>
@@ -101,6 +100,22 @@
                 }
             }
         }
+		function recup_infos_jeune($email){
+			$fichier_compte=fopen("people.csv","r");
+			$infos_jeune=array();
+			$trouve=false;
+			while(feof($fichier_compte) == false and !$trouve) {
+				$csv = fgets($fichier_compte);
+				$user = str_getcsv($csv, ';');
+			
+				if ($email == $user[3]) {
+					$infos_jeune=array($user[0],$user[1]);
+					$trouve=true;
+				}
+			}
+			fclose($fichier_compte);
+			return $infos_jeune;
+		}
     ?>
 </body>
 

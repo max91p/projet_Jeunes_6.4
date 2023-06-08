@@ -19,8 +19,6 @@
 
     }
     function envoyer_demande_mail($liste_id,$email,$prenom_consultant,$nom_consultant,$prenom_jeune,$nom_jeune){
-	    // 0        1         2              3           4      5         6            7            8             9             10               11         12      13
-		//"$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut\n\n\n";
         $mail = new PHPMailer; 
         $mail->CharSet = "UTF-8";
         // Server settings 

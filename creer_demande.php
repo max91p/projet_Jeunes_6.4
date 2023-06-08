@@ -50,7 +50,7 @@
             $email_jeune=$_SESSION["email"];
             $fichier=fopen("references.txt","a");
             $date=date("d/m/Y");
-            $texte="$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|En attente\n\n\n";
+            $texte="$id|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|En attente\n\n\n";
             fwrite($fichier,$texte);
 			fclose($fichier);
         }

@@ -17,25 +17,25 @@
         <body>";
     fwrite($fichier,$debut);
     for ($i=0;$i<count($ref_a_exporter);$i++){
-        // 0        1         2              3           4      5         6            7            8             9             10               11         12      13
-        //"$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut\n\n\n";
+        // 0         1         2       3         4            5            6             7               8               9          10    11             12                    13                14  
+		//"$id|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut|$savoir_faire_valides|$savoir_etre_valides|$commentaires\n\n\n";
         $ref=$ref_a_exporter[$i];
-        $descr=str_replace("\n","<br>",$ref[6]);
-        $sf=str_replace("\n","<br>",$ref[7]);
-        $se=str_replace("\n","<br>",$ref[8]);
-        $sfv=str_replace("\n","<br>",$ref[14]);
-        $sev=str_replace("\n","<br>",$ref[15]);
-        $comment=str_replace("\n","<br>",$ref[16]);
+        $descr=str_replace("\n","<br>",$ref[4]);
+        $sf=str_replace("\n","<br>",$ref[5]);
+        $se=str_replace("\n","<br>",$ref[6]);
+        $sfv=str_replace("\n","<br>",$ref[12]);
+        $sev=str_replace("\n","<br>",$ref[13]);
+        $comment=str_replace("\n","<br>",$ref[14]);
         $contenu_ref="<h3>Engagement :</h3>
-        <u>Milieu</u> : $ref[4]<br>
-        <u>Durée</u> : $ref[5]<br>
+        <u>Milieu</u> : $ref[2]<br>
+        <u>Durée</u> : $ref[3]<br>
         <u>Description</u> :<br>$descr<br><br>
         <u>Savoir-faire</u> :<br>$sf<br><br>
         <u>Savoir-être</u> :<br>$se<br><br>
         <h3>Référence : </h3>
         <u>Référent(e)</u> :<br>
-        $ref[10] $ref[9] <br>
-        $ref[11] <br><br>
+        $ref[8] $ref[7] <br>
+        $ref[9] <br><br>
         <u>Savoirs-faire validés</u> :<br>$sfv<br><br>
         <u>Savoir_être validés</u> :<br>$sev<br><br>
         <u>Commentaires</u> :<br>$comment<br><hr><br>";

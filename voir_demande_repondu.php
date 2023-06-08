@@ -51,14 +51,14 @@
 			if ($trouve==false){
 				echo "Erreur sur l'ID";
 			}else{
-                // 0        1         2              3           4      5         6            7            8             9             10               11         12      13             14                    15                16
-				//"$id|$nom_jeune|$prenom_jeune|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut|$savoir_faire_observes|$savoir_etre_observes|$commentaires\n\n\n";
-				$texte_description=str_replace("\r\n","<br>",$ligne_decoupee[6]);
-                $texte_savoir_faire=str_replace("\n","<br>",$ligne_decoupee[7]);
-                $texte_savoir_etre=str_replace("\n","<br>",$ligne_decoupee[8]);
-                $texte_savoir_faire_observes=str_replace("\n","<br>",$ligne_decoupee[14]);
-                $texte_savoir_etre_observes=str_replace("\n","<br>",$ligne_decoupee[15]);
-                $texte_commentaires=str_replace("\r\n","<br>",$ligne_decoupee[16]);
+                // 0         1         2       3         4            5            6             7               8               9          10    11             12                    13                14  
+		        //"$id|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut|$savoir_faire_valides|$savoir_etre_valides|$commentaires\n\n\n";
+                $texte_description=str_replace("\r\n","<br>",$ligne_decoupee[4]);
+                $texte_savoir_faire=str_replace("\n","<br>",$ligne_decoupee[5]);
+                $texte_savoir_etre=str_replace("\n","<br>",$ligne_decoupee[6]);
+                $texte_savoir_faire_observes=str_replace("\n","<br>",$ligne_decoupee[12]);
+                $texte_savoir_etre_observes=str_replace("\n","<br>",$ligne_decoupee[13]);
+                $texte_commentaires=str_replace("\r\n","<br>",$ligne_decoupee[14]);
                 echo 
                 "<header>
                     <div align=left style='vertical-align: middle;'>
@@ -81,8 +81,8 @@
                         <tr>
                             <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;'><div>
                                 Mon engagement :<br>
-                                <br>Milieu de l'engagement :<br>$ligne_decoupee[4]
-                                <br><br>Durée de l'engagement :<br>$ligne_decoupee[5]
+                                <br>Milieu de l'engagement :<br>$ligne_decoupee[2]
+                                <br><br>Durée de l'engagement :<br>$ligne_decoupee[3]
                                 <br><br>Description de l'engagement : <div style='height:100px;overflow-y:scroll'>$texte_description</div>
                             </div></td>
                             <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
@@ -97,9 +97,9 @@
                         <tr>
                             <td style='border:2px solid black;margin:0;padding:5px 15px 10px 10px;vertical-align:top;'><div style='height:100%;'>
                                 Référent :
-                                <br><br>Nom : <br>$ligne_decoupee[9]
-                                <br><br>Prénom : <br>$ligne_decoupee[10]
-                                <br><br>Email : <br>$ligne_decoupee[11]
+                                <br><br>Nom : <br>$ligne_decoupee[7]
+                                <br><br>Prénom : <br>$ligne_decoupee[8]
+                                <br><br>Email : <br>$ligne_decoupee[9]
                             </div></td>
                             <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
                                 Savoir-faire validés :<br>$texte_savoir_faire_observes<br>
@@ -118,7 +118,7 @@
 						</tr>
                     </table>
                     <br>
-                    <p>Envoyé le <span id='date_envoi'>$ligne_decoupee[12]</span><br>Statut : <span id='statut'>$ligne_decoupee[13]</span></p>
+                    <p>Envoyé le <span id='date_envoi'>$ligne_decoupee[10]</span><br>Statut : <span id='statut'>$ligne_decoupee[11]</span></p>
                     <br>
                     <br>
                     <br>
