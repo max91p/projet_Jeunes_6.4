@@ -35,8 +35,8 @@ foreach ($data as $item) {
     //var_dump($item);
     if ($username == $csv[3]) {
 
-		$firstname = $csv[1];
-		$lastname = $csv[0];
+		$firstname = $csv[0];
+		$lastname = $csv[1];
 		$birth = $csv[2];
 		$username = $csv[3];
 
