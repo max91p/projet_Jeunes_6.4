@@ -6,19 +6,6 @@
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <link rel="stylesheet" href="./style/selection_envoi_ref.css">
-        <script>
-            function clic_ref(table){
-                var id=table.getAttribute("id");
-                var td_statut=document.querySelector("#"+id+" > tbody > tr > td:nth-child(2)>span");
-                var statut=td_statut.innerHTML;
-                console.log(statut);
-                if (statut=="Répondu"){
-                    location.href='voir_demande_repondu.php';
-                }else{
-                    location.href='voir_demande_attente.php';
-                }
-            }
-        </script>
     </head>
     <body>
             <?php
