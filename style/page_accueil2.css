@@ -128,21 +128,23 @@ border-top: white ;
     width: 100%;
     text-align: center;
 }
-.lien{
+#lien{
     max-width: 300px;
     max-height: 300px;
     line-height: 50px;
     position: relative;
     margin: 0 auto;
-    background-color: #bfbfbf;
-    color: black;
+    background-color: #717171;
+    color: white;
     font-size: 30px;
     border-radius: 30px;
     margin-top: 50px;
     cursor: pointer;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
-.lien:hover{
-    outline: 3px solid #bfbfbf;
+#lien:hover{
+    outline: 3px solid #717171;
     outline-offset: 3px;
 }

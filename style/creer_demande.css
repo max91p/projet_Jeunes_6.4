@@ -56,6 +56,7 @@ body{
     color: white;
     background: rgb(240, 9, 124);
     box-sizing: border-box;
+    cursor: pointer;
     border-radius: 15px;
     font-size: 30px;
     display: inline-block;
@@ -63,16 +64,45 @@ body{
     padding-right: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
+#bouton:before {
+    height: 0%;
+    width: 2px;
+}
+#bouton:hover{
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),-4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2),inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
 
-#content{
-    max-width: 400px;
-    margin: 30px auto;
+#home{
+    position: absolute;
+    left: 0;
+    top: 160px;
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+#title{
+    margin: auto;
+    margin-top:35px;
+    margin-bottom: 35px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(240, 9, 124);
+    text-align: center;
+    width: 1000px;
+}
+
+td{
+    box-sizing: border-box;
+    border: 2px solid rgb(240, 9, 124);
+    padding: 10px;
+    vertical-align: top;
 }
 
 input[type="text"], 
-input[type="password"], 
-input[type="email"], 
-input[type="date"]
+textarea[type="text"],
+input[type="email"]
 {
     box-sizing: border-box;
     width: 100%;
@@ -80,24 +110,40 @@ input[type="date"]
     
 }
 input[type="text"]:focus, 
-input[type="password"]:focus, 
-input[type="email"]:focus, 
-input[type="date"]:focus 
+textarea[type="text"]:focus,
+input[type="email"]:focus
 {
     outline: none;
     box-shadow: 0 0 5px rgb(240, 9, 124);
     border:1px solid rgb(240, 9, 124);
 }
 
+.form{
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(240, 9, 124);
+}
+.subtitle{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(240, 9, 124);
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+textarea[type="text"]{
+    resize: none;
+}
+
 input[type="submit"]{
     background-color: rgb(240, 9, 124);
     color: white;
     border: none;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 21px;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 2%;
 }
 input[type="submit"]:hover{
     outline: 2px solid rgb(240, 9, 124);
@@ -105,36 +151,5 @@ input[type="submit"]:hover{
 }
 #submit{
     text-align: center;
-}
-
-label{
-    font-size: 17px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(240, 9, 124);
-}
-legend{
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(240, 9, 124);
-}
-
-fieldset {
-    border:1px solid rgb(240, 9, 124); 
-}
-
-.form{
-    margin-top: 10px;
-}
-
-p > a{
-    color:rgb(240, 9, 124);
-    cursor: pointer;
-}
-p > a:hover{
-    text-decoration:underline rgb(240, 9, 124);
-}
-p{
-    margin-bottom: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    
+    margin-bottom: 20px;
 }

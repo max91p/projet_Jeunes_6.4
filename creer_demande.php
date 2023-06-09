@@ -5,20 +5,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+    <link rel="stylesheet" href="./style/creer_demande.css">
+    <title>Créer une demande de référence</title>
 </head>
-<body style="margin: 0;">
+<body>
     <?php
         use PHPMailer\PHPMailer\PHPMailer; 
         use PHPMailer\PHPMailer\SMTP; 
@@ -94,18 +84,19 @@
         }
 	?>
 	<header>
-		<div align=left style="vertical-align: middle;">
-            <a href=page_accueil2.html><img style="max-height: 100px;" src="media/logo.png" alt="Logo site"></a>
+        <div id="logo">
+		    <a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
+			
 		</div>
-		<div align=right style="vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;">
-			<a href="voir_profil.php" style="vertical-align: middle;font-size: 30px;">Jeune</a>
+		<div id="texte"><p>Je donne de la valeur à mon engagement</p></div>
+		
+		<div id="bouton">
+			<a href="voir_profil.php">Jeune</a>
 		</div>
 	</header>
-	<br>
-	<br>
 	<main>
-        <a href="accueil_compte.html"><--</a>
-        <h5>Décrivez votre expérience et mettez en avant ce que vous en avez retiré.</h5>
+        <a href="accueil_compte.html"><img id="home" src="./media/home.png" alt="home"></a>
+        <div id="title" >Décrivez votre expérience et mettez en avant ce que vous en avez retiré.</div>
         <form method="post">
             <table style="width:100%;table-layout: fixed;" cellspacing=4>
                 <colgroup>
@@ -114,40 +105,66 @@
                     <col span="1" style="width: 25%;">
                 </colgroup>
                 <tr>
-                    <td style="border:2px solid black;margin:0;padding:5px 15px 5px 10px;"><div>
-                        Mon engagement :<br>
-                        <br>Milieu de l'engagement : <input style="width:100%;" name="milieu" type="text">
-                        <br><br>Durée de l'engagement :<input style="width:100%;" name="duree" type="text">
-                        <br><br>Description de l'engagement : <textarea style="width:100%;height:100px;" name="description" type="text"></textarea>
-                    </div></td>
-                    <td style="border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;"><div style="height:100%;">
-                        Mes savoir-faire :<br><br>
-                        <textarea style="width:100%;height:233px;" name="savoir_faire"></textarea>
-                    </div></td>
-                    <td style="border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;"><div style="height:100%;">
-                        Mes savoir-être :<br><br>
-                        <textarea style="width:100%;height:233px;" name="savoir_etre"></textarea>
-                    </div></td>
+                    <td>
+                        <div class="subtitle">Mon engagement :</div>
+
+                        <div class="form">
+                            <label for="milieu">Milieu de l'engagement :</label>
+                            <input id="milieu" name="milieu" type="text">
+                        </div>
+                        <div class="form">
+                            <label for="duree">Durée de l'engagement :</label>
+                            <input id="duree" name="duree" type="text">
+                        </div>
+                        <div class="form">
+                            <label for="description">Description de l'engagement :</label>
+                            <textarea style="height:100px;" id="description" name="description" type="text"></textarea>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subtitle">Mes savoir-faire :</div>
+                        <textarea style="height:273px;" name="savoir_faire" type="text"></textarea>
+                    </td>
+                    <td>
+                        <div class="subtitle">Mes savoir-être :</div>
+                        <textarea style="height:273px;" name="savoir_etre" type="text"></textarea>
+                    </td>
                 </tr>
                 <tr>
-                    <td style="border:2px solid black;margin:0;padding:5px 15px 10px 10px;vertical-align:top;"><div style="height:100%;">
-                        Référent :
-                        <br><br>Nom : <input style="width:100%;" name="nom_referent" type="text">
-                        <br><br>Prénom : <input style="width:100%;" name="prenom_referent" type="text">
-                        <br><br>Email :<input style="width:100%;" name="email_referent" type="text">
-                    </div></td>
+                    <td>
+                        <div class="subtitle">Mon référent :</div>
+                        <div class="form">
+                            <label for="nom_referent">Nom :</label>
+                            <input id="nom_referent" name="nom_referent" type="text">
+                        </div>
+                        <div class="form">
+                            <label for="prenom_referent">Prénom :</label>
+                            <input id="prenom_referent" name="prenom_referent" type="text">
+                        </div>
+                        <div class="form">
+                            <label for="email_referent">Email :</label>
+                            <input id="email_referent" name="email_referent" type="email">
+                        </div>
+                    </td>
                 </tr>
             </table>
             <br>
-            <div style="text-align:center;">
-            <input style="font-size:20px;" type="submit" name="submit" value="Valider">
+            <div id="submit">
+                <input type="submit" name="submit" value="Valider">
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
         </form>
 	</main>
 </body>
+<script>
+	// recupère la largeur du navigateur et cache le texte si la largeur est inférieure à 865px
+	window.addEventListener('resize', function() {
+		var browserWidth = window.innerWidth;
 
+		if (browserWidth < 865) { 
+			document.getElementById('texte').style.display = 'none';
+		} else {
+			document.getElementById('texte').style.display = 'inline-block';
+		}
+	});
+</script>
 </html>
