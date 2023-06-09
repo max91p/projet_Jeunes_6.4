@@ -2,28 +2,22 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+	<link rel="stylesheet" href="./style/consulter_liste_demande_consultant.css">
+  
 </head>
-<body style="margin: 0;">
-	<header>
-			<div align=left style='vertical-align: middle;'>
-				<a href=page_accueil2.html><img style='max-height: 100px;' src='../media/logo.png' alt='Logo site'></a>
+<body >
+<header>
+		<div id="logo">
+			<a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
+			
+		</div>
+			<div id="texte">Je donne de la valeur à ton engagement</div>
+	
+			<div id="bouton">
+				<a>Consultant</a>
 			</div>
-			<div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-				<a style='vertical-align: middle;font-size: 30px;'>Consultant</a>
-			</div>
-	</header><br><br>
+		</header>
+	<br><br>
     <?php
         if (isset($_GET['references_id'])){
             $liste_id_references=explode(',',$_GET['references_id']);
@@ -67,32 +61,36 @@
 					$email_jeune=$liste_references[0][1];
 					$infos_jeune=recup_infos_jeune($email_jeune);
 					echo "<main>
-					<h2>Consultez les informations et les références du candidat</h2>
-					<table style='width:98%;margin:1%;'>
+						<div class='titre'>Consultez les informations et les références du candidat</div>
+					<table >
 						<colgroup>
 							<col span='1' style='width: 50%;'>
 							<col span='1' style='width: 50%;'>
 						</colgroup>
 						<tr>
-							<td style='margin:0;vertical-align:top;padding-right:5px;'><div style='padding:5px 15px 1% 1%;border:2px solid black;height:100%;'>
-									<u>Informations du candidat :</u><br><br>
-									Nom :<br> $infos_jeune[1] <br><br>
-									Prénom : <br> $infos_jeune[0] <br><br>
-									Email : <br> $email_jeune <br>
-								</div></td>
-							<td rowspan='2' style='margin:0;vertical-align:top;padding-left:5px;'><div style='padding:5px 15px 1% 1%;border:2px solid black;height:100%;'>
+							<td>
+								<div id='content'>
+								<fieldset>
+									<u>Informations du candidat :</u><br><br><br>
+									<div class='bleu'>Nom : </div> $nom_jeune <br><br><br>
+									<div class='bleu'>Prénom : </div> $prenom_jeune <br><br><br>
+									<div class='bleu'>Email : </div> $email_jeune <br>
+								</div></td>  </div></fieldset>
+							<td rowspan='2'>
+								<div id='content'>
+									<fieldset>
 								<u>Références du candidat :</u><br><br>";
 					for ($i=0;$i<count($liste_references);$i++){
 						$nom_ref=$liste_references[$i][7];
 						$prenom_ref=$liste_references[$i][8];
 						$date=$liste_references[$i][10];
 						$milieu=$liste_references[$i][2];
-						echo 	"<div style='border:2px solid black; align:center;width:99%;padding:5px;'>
-									Milieu : $milieu<br><br>
-									Référent(e) : $prenom_ref $nom_ref<br>
-									Date d'envoi : $date
-								</div>
-								<br>";
+						echo 	"<fieldset>
+									<div class='bleu'>Milieu : </div>$milieu<br><br>
+									<div class='bleu'>Référent(e) : </div>$prenom_ref $nom_ref<br><br>
+									<div class='bleu'>Date d'envoi : </div>$date
+								</div> </fieldset>
+							<br> ";
 					}
 					echo 	"</div></td>
 						</tr>
