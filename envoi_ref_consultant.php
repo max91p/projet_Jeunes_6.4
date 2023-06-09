@@ -38,8 +38,8 @@
         $bodyContent = "Bonjour $prenom_consultant $nom_consultant,<br><br>
 		$prenom_jeune $nom_jeune vous envoie ses références via la plateforme Jeunes 6.4.<br><br>
         JEUNES 6.4 est un dispositif de valorisation de l’engagement des jeunes en Pyrénées-Atlantiques soutenu par l’Etat, le Conseil général, le conseil régional, les CAF Béarn-Soule et Pays Basque, la MSA, l’université de Pau et des pays de l’Adour, la CPAM.<br><br>
-        Cliquez sur ce lien pour consulter les références de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/liste_references_consultant.php/?references_id=$liste_id<br>
-        (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier liste_references_consultant.php et rajouter /?references_id=$liste_id derrière)<br><br>
+        Cliquez sur ce lien pour consulter les références de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/consulter_liste_demande_consultant.php/?references_id=$liste_id<br>
+        (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_liste_demande_consultant.php et rajouter /?references_id=$liste_id derrière)<br><br>
         Cordialement,<br><br>L'équipe de Jeunes 6.4"; 
         $mail->Body= $bodyContent;
         $res=$mail->send();
