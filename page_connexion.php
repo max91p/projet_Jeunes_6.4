@@ -7,6 +7,12 @@
 	
 </head>
 <body>
+	<?php
+		if(isset($_SESSION["email"]) && isset($_SESSION["prenom"]) && isset($_SESSION["nom"])){
+			header('Location: accueil_compte.html');
+			exit();
+		}
+	?>
 	<header>
 		<div id="logo">
 		    <a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
