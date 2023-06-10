@@ -32,7 +32,12 @@ $data = file('people.csv');
 foreach ($data as $item) {
     //on décide chaque ligne comme étant du csv
     $csv = str_getcsv($item, ';');
-    //var_dump($item);
+	
+    //prise en compte si il y a des lignes vides
+    if (count($csv) != 5) {
+	continue;
+    }
+    
     if ($username == $csv[3]) {
 
 		$firstname = $csv[0];
