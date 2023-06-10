@@ -72,8 +72,8 @@
 								<div id='content'>
 								<fieldset>
 									<u>Informations du candidat :</u><br><br><br>
-									<div class='bleu'>Nom : </div> $nom_jeune <br><br><br>
-									<div class='bleu'>Prénom : </div> $prenom_jeune <br><br><br>
+									<div class='bleu'>Nom : </div> $infos_jeune[1] <br><br><br>
+									<div class='bleu'>Prénom : </div> $infos_jeune[0] <br><br><br>
 									<div class='bleu'>Email : </div> $email_jeune <br>
 								</div></td>  </div></fieldset>
 							<td rowspan='2'>
