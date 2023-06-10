@@ -11,6 +11,7 @@
 <body>
 <?php
 		if (isset($_GET['reference_id'])){
+            $liste_id=$_SESSION['liste_id'];
 			$id=$_GET['reference_id'];
 			$fichier=fopen("references.txt","r");
 			$trouve=false;
@@ -63,13 +64,13 @@
                         <a href=page_accueil2.html><img style='max-height: 100px;' src='../media/logo.png' alt='Logo site'></a>
                     </div>
                     <div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-                        <a href='voir_profil.php' style='vertical-align: middle;font-size: 30px;'>Jeune</a>
+                        <a style='vertical-align: middle;font-size: 30px;'>Consultant</a>
                     </div>
                 </header>
                 <br>
                 <br>
                 <main>
-                    <a href='../liste_demande.php'><--</a>
+                    <a href='../consulter_liste_demande_consultant.php/?references_id=<?php echo $liste_id;?>'><--</a>
                     <table style='width:100%;table-layout: fixed;' cellspacing=4>
                         <colgroup>
                             <col span='1' style='width: 50%;'>

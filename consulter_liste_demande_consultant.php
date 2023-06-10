@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +29,7 @@
     <?php
         if (isset($_GET['references_id'])){
             $liste_id_references=explode(',',$_GET['references_id']);
+			$_SESSION["liste_id"]=$_GET['references_id'];
             if (file_exists("references.txt")){
 				$liste_references=array();
 				$fichier=fopen("references.txt","r");
@@ -80,7 +84,7 @@
 									<div class='bleu'>Nom : </div> $infos_jeune[1] <br><br><br>
 									<div class='bleu'>Prénom : </div> $infos_jeune[0] <br><br><br>
 									<div class='bleu'>Email : </div> $email_jeune <br>
-								</div></td>  </div></fieldset>
+								</fieldset></div></td>
 							<td rowspan='2'>
 								<div id='content'>
 									<fieldset>
@@ -95,10 +99,10 @@
 									<div class='bleu'>Milieu : </div>$milieu<br><br>
 									<div class='bleu'>Référent(e) : </div>$prenom_ref $nom_ref<br><br>
 									<div class='bleu'>Date d'envoi : </div>$date
-								</div> </fieldset>
+								</fieldset>
 							<br> ";
 					}
-					echo 	"</div></td>
+					echo 	"</fieldset></div></td>
 						</tr>
 				</main>";
                 }
