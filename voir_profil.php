@@ -19,25 +19,19 @@
 
 		session_start();
 		$username = $_SESSION['email'];
-		//session_unset();
-		//session_destroy();
 
 // récupération de toutes les lignes du fchier dans un tableau
 $data = file('people.csv');
 
-//echo $username;
-//débug
-//var_dump($_POST);
-
 foreach ($data as $item) {
     //on décide chaque ligne comme étant du csv
     $csv = str_getcsv($item, ';');
-	
-    //prise en compte si il y a des lignes vides
-    if (count($csv) != 5) {
-	continue;
-    }
-    
+
+	//prise en compte si il y a des lignes vides
+	if (count($csv) != 5) {
+		continue;
+	}
+
     if ($username == $csv[3]) {
 
 		$firstname = $csv[0];
@@ -45,7 +39,6 @@ foreach ($data as $item) {
 		$birth = $csv[2];
 		$username = $csv[3];
 
-		//echo "utilisateur trouvé";
 		break;
     }
 }
