@@ -18,15 +18,35 @@ $lastname   = trim($_POST['lastname']);
 $birth      = trim($_POST['birth']);
 $password   = trim($_POST['password']);
 
-//var_dump($_POST);
+if (file_exists('people.csv') == false) {
+    header('Location: page_modifier_compte.php');
+}
 
-echo 'username' . $username;
-var_dump($username);
+$data = file('people.csv');
 
+// $key = clé et $csv = valeur
+foreach ($data as $key => $csv) {
+    
+    //prend une chaine csv et le transforme en tableau
+    $user = str_getcsv($csv, ';');
 
-$fp = fopen('people.csv', 'r+');
+    if ($username == $user[3]) {
+        $newCsv = $lastname . ';' . $firstname . ';' . $birth . ';' . $username . ';' . password_hash($password, null, []) . "\n";
+        $data[$key] = $newCsv;
+        ?>
+        <meta http-equiv="refresh" content="3; URL=accueil_compte.html">
+        <?php
+        break;
+    }
+
+}
+
+file_put_contents('people.csv', $data);
+
+/*$fp = fopen('people.csv', 'r+');
 
 $counter = 0;
+$foundUser = false;
 
 while(feof($fp) == false) {
 
@@ -36,7 +56,7 @@ while(feof($fp) == false) {
     $user = str_getcsv($csv, ';');
 
     if ($username == $user[3]) {
-        echo 'utilisateur trouvé';
+        $foundUser = true;
         $newCsv = $lastname . ';' . $firstname . ';' . $birth . ';' . $username . ';' . password_hash($password, null, []) . "\n";
         fseek($fp, $counter, SEEK_SET);
         fwrite($fp,$newCsv);
@@ -48,11 +68,7 @@ while(feof($fp) == false) {
 
     }
     $counter += strlen($csv);
-
-    //var_dump($csv);
-}
-
-fclose($fp);
+}*/
 
 ?>
 
