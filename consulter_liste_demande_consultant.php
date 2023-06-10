@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<link rel="stylesheet" href="./style/consulter_liste_demande_consultant.css">
+	<link rel="stylesheet" href="../style/consulter_liste_demande_consultant.css">
   
 </head>
 <body >
 <header>
 		<div id="logo">
-			<a href=page_accueil2.html><img src="./media/logo.png" alt="Logo site"></a>
+			<a href=page_accueil2.html><img src="../media/logo.png" alt="Logo site"></a>
 			
 		</div>
 			<div id="texte">Je donne de la valeur à ton engagement</div>
