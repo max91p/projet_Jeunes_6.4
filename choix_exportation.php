@@ -39,7 +39,7 @@
         </header>
         <br>
         <main>
-            <a href="selection_exporter_ref.php"><--</a>
+            <a href='selection_exporter_ref.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
             <div id="content">
                 <form method='post' action='exporter_fichier.php'>
                     <fieldset>

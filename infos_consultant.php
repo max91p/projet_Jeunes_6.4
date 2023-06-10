@@ -46,12 +46,10 @@
 		</div>
 	</header>
 	<main>
-        <a href="selection_envoi_ref.php"></a>
+        <a href='selection_envoi_ref.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
         <div id="content">
         <fieldset>
 			<legend>Renseigner les informations du consultant </legend>
-       
-  
             <form action="envoi_ref_consultant.php" method="post">
                 <div class="form">
                     <label for="nom_consultant">Nom</label>

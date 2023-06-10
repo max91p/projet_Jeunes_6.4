@@ -16,6 +16,7 @@
 		</div>
 	</header>
 	<main>
+	<a href='voir_profil.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
 <?php
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
