@@ -29,9 +29,13 @@ foreach ($data as $key => $csv) {
     
     //prend une chaine csv et le transforme en tableau
     $user = str_getcsv($csv, ';');
-
+    if (strlen($password)==0){
+        $new_password=$user[4];
+    }else{
+        $new_password=password_hash($password, null, []);
+    }
     if ($username == $user[3]) {
-        $newCsv = $lastname . ';' . $firstname . ';' . $birth . ';' . $username . ';' . password_hash($password, null, []) . "\n";
+        $newCsv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . $new_password . "\n";
         $data[$key] = $newCsv;
         ?>
         <meta http-equiv="refresh" content="3; URL=accueil_compte.html">

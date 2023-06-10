@@ -70,7 +70,7 @@
 			</div>
 			<div class="form">
 				<label for="password">Mot de passe</label>
-				<input id="password" value="<?php echo $password; ?>" name="password" type="password">
+				<input id="password" name="password" type="password">
 			</div>
 			<div id="submit" class="form"> 
 				<input type="submit" value="Enregistrer">
