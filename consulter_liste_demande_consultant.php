@@ -71,7 +71,7 @@
 					$infos_jeune=recup_infos_jeune($email_jeune);
 					echo "<main>
 						<div class='titre'>Consultez les informations et les références du candidat</div>
-					<table >
+					<table>
 						<colgroup>
 							<col span='1' style='width: 50%;'>
 							<col span='1' style='width: 50%;'>
@@ -104,6 +104,7 @@
 					}
 					echo 	"</fieldset></div></td>
 						</tr>
+					</table>
 				</main>";
                 }
             }
