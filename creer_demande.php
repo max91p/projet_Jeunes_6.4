@@ -74,7 +74,7 @@
             $mail->Subject = "Jeunes 6.4 : Demande de référence pour $prenom_jeune $nom_jeune"; 
             $bodyContent = "Bonjour $prenom_referent $nom_referent,<br><br>$prenom_jeune $nom_jeune vous demande d'être son référent pour son expérience dans le milieu \"$milieu\" via la plateforme Jeunes 6.4.<br><br>
             JEUNES 6.4 est un dispositif de valorisation de l’engagement des jeunes en Pyrénées-Atlantiques soutenu par l’Etat, le Conseil général, le conseil régional, les CAF Béarn-Soule et Pays Basque, la MSA, l’université de Pau et des pays de l’Adour, la CPAM.<br><br>
-            Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/projet/PreIng%202/projet_Jeunes_6.4/consulter_reference_referent.php/?reference_id=$id<br>
+            Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/consulter_reference_referent.php/?reference_id=$id<br>
             (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_reference_referent.php et rajouter /?reference_id=$id derrière)<br><br>
             Cordialement,<br><br>L'équipe de Jeunes 6.4"; 
             $mail->Body= $bodyContent;
