@@ -3,7 +3,12 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<link rel="stylesheet" href="../style/consulter_liste_demande_consultant.css">
-  
+  	<script>
+        	function clic_ref(table){
+            		var id=table.getAttribute("id");
+            		location.href='../consulter_reference_consultant.php/?reference_id='+id;
+        	}
+	</script>
 </head>
 <body >
 <header>
@@ -85,7 +90,8 @@
 						$prenom_ref=$liste_references[$i][8];
 						$date=$liste_references[$i][10];
 						$milieu=$liste_references[$i][2];
-						echo 	"<fieldset>
+						$id_ligne=$liste_references[$i][0];
+						echo 	"<fieldset id='$id_ligne' onclick='clic_ref(this)'>
 									<div class='bleu'>Milieu : </div>$milieu<br><br>
 									<div class='bleu'>Référent(e) : </div>$prenom_ref $nom_ref<br><br>
 									<div class='bleu'>Date d'envoi : </div>$date
