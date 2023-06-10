@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
 </head>
 <body>
 
@@ -29,15 +28,20 @@ foreach ($data as $key => $csv) {
     
     //prend une chaine csv et le transforme en tableau
     $user = str_getcsv($csv, ';');
+	
+    //empêche la modification du mot de passe quand il y a une modification dans le compte
     if (strlen($password)==0){
         $new_password=$user[4];
     }else{
         $new_password=password_hash($password, null, []);
     }
     if ($username == $user[3]) {
+	//création de la liste de caractères dans la forme voulue dans le fichier csv 
         $newCsv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . $new_password . "\n";
         $data[$key] = $newCsv;
+	echo "Le compte a bien été modifié !"
         ?>
+	<!--mise en attente de 3 secondes avec un message pour savoir si le compte a bien été modifié-->
         <meta http-equiv="refresh" content="3; URL=accueil_compte.html">
         <?php
         break;
