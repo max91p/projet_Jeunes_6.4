@@ -68,6 +68,9 @@ foreach ($data as $item) {
 			<p class='title'>Email</p>
 			<p><?php echo $username?></p>
 		</div>
+		<div id="bouton_deconnexion">
+			<a href="deconnexion.php">Déconnexion</a>
+		</div>
 		
 	</main>
 </body>
