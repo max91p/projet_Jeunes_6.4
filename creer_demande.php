@@ -113,24 +113,24 @@
 
                         <div class="form">
                             <label for="milieu">Milieu de l'engagement :</label>
-                            <input id="milieu" name="milieu" type="text">
+                            <input id="milieu" name="milieu" type="text" required>
                         </div>
                         <div class="form">
                             <label for="duree">Durée de l'engagement :</label>
-                            <input id="duree" name="duree" type="text">
+                            <input id="duree" name="duree" type="text" required>
                         </div>
                         <div class="form">
                             <label for="description">Description de l'engagement :</label>
-                            <textarea style="height:100px;" id="description" name="description" type="text"></textarea>
+                            <textarea style="height:100px;" id="description" name="description" type="text" required></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="subtitle">Mes savoir-faire :</div>
-                        <textarea style="height:273px;" name="savoir_faire" type="text"></textarea>
+                        <textarea style="height:273px;" name="savoir_faire" type="text" required></textarea>
                     </td>
                     <td>
                         <div class="subtitle">Mes savoir-être :</div>
-                        <textarea style="height:273px;" name="savoir_etre" type="text"></textarea>
+                        <textarea style="height:273px;" name="savoir_etre" type="text" required></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -138,15 +138,15 @@
                         <div class="subtitle">Mon référent :</div>
                         <div class="form">
                             <label for="nom_referent">Nom :</label>
-                            <input id="nom_referent" name="nom_referent" type="text">
+                            <input id="nom_referent" name="nom_referent" type="text" required>
                         </div>
                         <div class="form">
                             <label for="prenom_referent">Prénom :</label>
-                            <input id="prenom_referent" name="prenom_referent" type="text">
+                            <input id="prenom_referent" name="prenom_referent" type="text" required>
                         </div>
                         <div class="form">
                             <label for="email_referent">Email :</label>
-                            <input id="email_referent" name="email_referent" type="email">
+                            <input id="email_referent" name="email_referent" type="email" required>
                         </div>
                     </td>
                 </tr>
