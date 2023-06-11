@@ -17,8 +17,8 @@ $password   = trim($_POST['password']);
     exit();
  }  
 
-//ouverture du fichier people.csv
- $fp = fopen('people.csv', 'r');
+//ouverture du fichier people.csv, le fichier est crée si il n'existe pas
+ $fp = fopen('people.csv', 'a+');
  
  while(feof($fp) == false) {
  
