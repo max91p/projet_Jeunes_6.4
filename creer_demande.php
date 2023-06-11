@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php
+        //importation de la bibliothèque PHPMailer
         use PHPMailer\PHPMailer\PHPMailer; 
         use PHPMailer\PHPMailer\SMTP; 
         use PHPMailer\PHPMailer\Exception;
@@ -17,6 +18,7 @@
         require 'PHPMailer/src/PHPMailer.php'; 
         require 'PHPMailer/src/SMTP.php';
 		if(isset($_POST["submit"])) {
+            //Former l'id de la référence -> 10 caractères dont le premier est une lettre (pour éviter des problèmes plus tard dans le programme)
             $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $id="";
             $id .= $caracteres[rand(10,strlen($caracteres)-1)];
@@ -25,8 +27,11 @@
             }
 			enregistrer_demande($id);
             envoyer_demande_mail($id);
+            header("Location: accueil_compte.html", true);
+            exit();
 		}
         function enregistrer_demande($id){
+            //Enregistrer la référence dans le fichier references.txt
             $milieu=$_POST["milieu"];
             $duree=$_POST["duree"];
             $description=$_POST["description"];
@@ -45,6 +50,7 @@
 			fclose($fichier);
         }
 		function envoyer_demande_mail($id){
+            //Envoie le mail au référent
             $milieu=$_POST["milieu"];
             $duree=$_POST["duree"];
             $description=$_POST["description"];
@@ -56,31 +62,28 @@
             $nom_jeune=$_SESSION["nom"];
             $prenom_jeune=$_SESSION["prenom"];
             $email_jeune=$_SESSION["email"];
-            $mail = new PHPMailer; 
+            $mail = new PHPMailer; //Initialise la variable comme objet de la classe PHPMailer
             $mail->CharSet = "UTF-8";
-            // Server settings 
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output 
-            $mail->isSMTP();                            // Set mailer to use SMTP 
-            $mail->Host = 'smtp-mail.outlook.com';           // Specify main and backup SMTP servers 
-            $mail->SMTPAuth = true;                     // Enable SMTP authentication 
-            $mail->Username = 'jeunes64@outlook.fr';       // SMTP username 
-            $mail->Password = 'InfoProjet64';         // SMTP password 
-            $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
-            $mail->Port = 587;                          // TCP port to connect to 
-            $mail->setFrom('jeunes64@outlook.fr', 'Jeunes 6.4'); 
+            //Paramètres du serveur 
+            $mail->isSMTP();
+            $mail->Host = 'smtp-mail.outlook.com';           // Précise l'hote
+            $mail->SMTPAuth = true;                     // Autorise l'authentification SMTP
+            $mail->Username = 'jeunes64@outlook.fr';       //L'addresse mail expéditeur
+            $mail->Password = 'InfoProjet64';         //Le mot de passe de l'addresse mail expéditeur
+            $mail->SMTPSecure = 'tls';                  //Chiffrement
+            $mail->Port = 587;                          //Port sur lequel se connecter
+            $mail->setFrom('jeunes64@outlook.fr', 'Jeunes 6.4'); //Adresse mail et le nom de l'expéditeur
             $mail->addReplyTo('jeunes64@outlook.fr', 'Jeunes 6.4');
-            $mail->addAddress($email_referent);
-            $mail->isHTML(true);
-            $mail->Subject = "Jeunes 6.4 : Demande de référence pour $prenom_jeune $nom_jeune"; 
+            $mail->addAddress($email_referent); //Adresse mail du destinataire
+            $mail->isHTML(true); //Mail au format html
+            $mail->Subject = "Jeunes 6.4 : Demande de référence pour $prenom_jeune $nom_jeune"; //Objet du mail
             $bodyContent = "Bonjour $prenom_referent $nom_referent,<br><br>$prenom_jeune $nom_jeune vous demande d'être son référent pour son expérience dans le milieu \"$milieu\" via la plateforme Jeunes 6.4.<br><br>
             JEUNES 6.4 est un dispositif de valorisation de l’engagement des jeunes en Pyrénées-Atlantiques soutenu par l’Etat, le Conseil général, le conseil régional, les CAF Béarn-Soule et Pays Basque, la MSA, l’université de Pau et des pays de l’Adour, la CPAM.<br><br>
             Cliquez sur ce lien pour valider la demande de référence de $prenom_jeune $nom_jeune : localhost/consulter_reference_referent.php/?reference_id=$id<br>
             (Pour ouvrir cette page dans localhost, tapez le chemin vers le fichier consulter_reference_referent.php et rajouter /?reference_id=$id derrière)<br><br>
             Cordialement,<br><br>L'équipe de Jeunes 6.4"; 
-            $mail->Body= $bodyContent;
-            $res=$mail->send();
-            header("Location: accueil_compte.html", true);
-            exit();
+            $mail->Body= $bodyContent; //Contenu du mail
+            $res=$mail->send(); //Envoi du mail
         }
 	?>
 	<header>
