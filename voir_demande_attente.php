@@ -2,20 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<style>
-		header{
-			width: 100%;
-			height: 100px;
-			left: 0px;
-			top: 0px;
-			background: #D9D9D9;
-		}
-		a{
-			 all: unset;
-		}
-	</style>
+    <link rel="stylesheet" href="../style/voir_demande_attente.css">
+    <title>Voir mes référence</title>
 </head>
-<body style="margin: 0;">
+<body>
     <?php
 		if (isset($_GET['reference_id'])){
 			$id=$_GET['reference_id'];
@@ -58,17 +48,15 @@
                 $texte_savoir_etre=str_replace("\n","<br>",$ligne_decoupee[6]);
                 echo "
                 <header>
-                    <div align=left style='vertical-align: middle;'>
-                        <a href=page_accueil2.html><img style='max-height: 100px;' src='../media/logo.png' alt='Logo site'></a>
+                    <div id='logo'>
+                        <a href=page_accueil2.html><img src='../media/logo.png' alt='Logo site'></a>
                     </div>
-                    <div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-                        <a href='voir_profil.php' style='vertical-align: middle;font-size: 30px;'>Jeune</a>
+                    <div id='bouton'>
+                        <a href='voir_profil.php'>Jeune</a>
                     </div>
                 </header>
-                <br>
-                <br>
                 <main>
-                    <a href='../liste_demande.php'><--</a>
+                    <a href='../liste_demande.php'><img id='arrow'src='../media/arrow.png' alt='arrow'></a>
                     <table style='width:100%;table-layout: fixed;' cellspacing=4>
                         <colgroup>
                             <col span='1' style='width: 50%;'>
@@ -76,35 +64,46 @@
                             <col span='1' style='width: 25%;'>
                         </colgroup>
                         <tr>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;'><div>
-                                Mon engagement :<br>
-                                <br>Milieu de l'engagement :<br>$ligne_decoupee[2]
-                                <br><br>Durée de l'engagement :<br>$ligne_decoupee[3]
-                                <br><br>Description de l'engagement : <div style='height:100px;overflow-y:scroll'>$texte_description</div>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Mes savoir-faire :<br><br>
-                                <div id='savoir_faire' style='height:233px;overflow-y:scroll'>$texte_savoir_faire</div>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Mes savoir-être :<br><br>
-                                <div id='savoir_etre' style='height:233px;overflow-y:scroll'>$texte_savoir_etre</div>
-                            </div></td>
+                            <td class='jeune'>
+                                <div>
+                                    <div class='subtitle_jeune'>Mon engagement :</div>
+                                    <div class='rose'>Milieu de l'engagement :</div>
+                                    <div class='texte'>$ligne_decoupee[2]</div>
+                                    <div class='rose'>Durée de l'engagement :</div>
+                                    <div class='texte'>$ligne_decoupee[3]</div>
+                                    <div class='rose'>Description de l'engagement :</div>
+                                    <div id='description'>$texte_description</div>
+                                </div>
+                            </td>
+                            <td class='jeune'>
+                                <div>
+                                    <div class='subtitle_jeune'>Mes savoir-faire :</div>
+                                    <div id='savoir_faire'>$texte_savoir_faire</div>
+                                </div>
+                            </td>
+                            <td class='jeune'>
+                                <div>
+                                    <div class='subtitle_jeune'>Mes savoir-être :</div>
+                                    <div id='savoir_etre'>$texte_savoir_etre</div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                        <td style='border:2px solid black;margin:0;padding:5px 15px 10px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Référent :
-                                <br><br>Nom : <br>$ligne_decoupee[7]
-                                <br><br>Prénom : <br>$ligne_decoupee[8]
-                                <br><br>Email : <br>$ligne_decoupee[9]
-                            </div></td>
+                            <td class='referent'>
+                                <div>
+                                    <div class='subtitle_referent'>Référent :</div>
+                                    <div class='vert'>Nom :</div>
+                                    <div class='texte'>$ligne_decoupee[7]</div>
+                                    <div class='vert'>Prénom :</div>
+                                    <div class='texte'>$ligne_decoupee[8]</div>
+                                    <div class='vert'>Email :</div>
+                                    <div class='texte'>$ligne_decoupee[9]</div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                     <br>
-                    <p>Envoyé le $ligne_decoupee[10]<br>Statut : $ligne_decoupee[11]</p>
-                    <br>
-                    <br>
-                    <br>
+                    <p>Envoyé le $ligne_decoupee[10]<br>Statut : <span id='statut'>$ligne_decoupee[11]</span></p>
                     <br>
                 </main>";
 			}

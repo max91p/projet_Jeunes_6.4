@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <link rel="stylesheet" href="./style/creer_demande.css">
+    <link rel="stylesheet" href="../style/consulter_reference_consultant.css">
     <title>Créer une demande de référence</title>
 </head>
 <body>
@@ -59,18 +59,17 @@
         }
             ?>
 
-<header>
-                    <div align=left style='vertical-align: middle;'>
-                        <a href=../page_accueil2.html><img style='max-height: 100px;' src='../media/logo.png' alt='Logo site'></a>
-                    </div>
-                    <div align=right style='vertical-align: middle;position:absolute;right:40px;top:25px;height:50px;line-height: 50px;'>
-                        <a style='vertical-align: middle;font-size: 30px;'>Consultant</a>
-                    </div>
-                </header>
-                <br>
-                <br>
+    <header>
+        <div id="logo">
+            <a href=page_accueil2.html><img src="../media/logo.png" alt="Logo site"></a>
+        </div>
+        <div id="texte">Je donne de la valeur à ton engagement</div>
+        <div id="bouton">
+            Consultant
+        </div>
+    </header>
                 <main>
-                    <a href='../consulter_liste_demande_consultant.php/?references_id=<?php echo $liste_id;?>'><--</a>
+                    <a href='../consulter_liste_demande_consultant.php/?references_id=<?php echo $liste_id;?>'><img id="arrow"src="../media/arrow2.png" alt="arrow"></a>
                     <table style='width:100%;table-layout: fixed;' cellspacing=4>
                         <colgroup>
                             <col span='1' style='width: 50%;'>
@@ -78,43 +77,56 @@
                             <col span='1' style='width: 25%;'>
                         </colgroup>
                         <tr>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;'><div>
-                                Mon engagement :<br>
-                                <br>Milieu de l'engagement :<br> <?php echo $ligne_decoupee[2]?>
-                                <br><br>Durée de l'engagement :<br><?php echo $ligne_decoupee[3]?>
-                                <br><br>Description de l'engagement : <div style='height:100px;overflow-y:scroll'><?php echo $texte_description ?></div>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Mes savoir-faire :<br><br>
-                                <div id='savoir_faire' style='height:233px;overflow-y:scroll'> <?php echo $texte_savoir_faire ?></div>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Mes savoir-être :<br><br>
-                                <div id='savoir_etre' style='height:233px;overflow-y:scroll'> <?php echo $texte_savoir_etre ?></div>
-                            </div></td>
+                            <td class="jeune">
+                                <div>
+                                    <div class="subtitle_jeune">Mon engagement :</div>
+                                    <div class="rose">Milieu de l'engagement :</div>
+                                    <div class="texte"><?php echo $ligne_decoupee[2]?></div>
+                                    <div class="rose">Durée de l'engagement :</div>
+                                    <div class="texte"><?php echo $ligne_decoupee[3]?></div>
+                                    <div class="rose">Description de l'engagement :</div>              
+                                    <div id="description"><?php echo $texte_description ?></div>
+                                </div>
+                            </td>
+                            <td class="jeune">
+                                <div>
+                                    <div class="subtitle_jeune">Mes savoir-faire :</div>
+                                    <div id='savoir_faire'> <?php echo $texte_savoir_faire ?></div>
+                                </div>
+                            </td>
+                            <td class="jeune">
+                                <div>
+                                    <div class="subtitle_jeune">Mes savoir-être :</div>
+                                    <div id='savoir_etre'> <?php echo $texte_savoir_etre ?></div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 10px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Référent :
-                                <br><br>Nom : <br> <?php echo $ligne_decoupee[7] ?>
-                                <br><br>Prénom : <br> <?php echo $ligne_decoupee[8] ?>
-                                <br><br>Email : <br> <?php echo $ligne_decoupee[9] ?>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Savoir-faire validés :<br> <?php echo $texte_savoir_faire_observes ?><br>
-                                <div id='savoir_faire_valides' style='height:150px;overflow-y:scroll'></div>
-                            </div></td>
-                            <td style='border:2px solid black;margin:0;padding:5px 15px 5px 10px;vertical-align:top;'><div style='height:100%;'>
-                                Savoir-être validés :<br> <?php echo $texte_savoir_etre_observes ?><br>
-                                <div id='savoir_etre_valides' style='height:150px;overflow-y:scroll'></div>
-                            </div></td>
+                            <td class="referent">
+                                <div>
+                                    <div class="subtitle_referent">Référent :</div>
+                                    <div class="vert">Nom :</div>
+                                    <div class="texte"><?php echo $ligne_decoupee[7] ?></div>
+                                    <div class="vert">Prénom :</div>
+                                    <div class="texte"><?php echo $ligne_decoupee[8] ?></div>
+                                    <div class="vert">Email :</div>
+                                    <div class="texte"><?php echo $ligne_decoupee[9] ?></div>
+                                </div>
+                            </td>
+                            <td class="referent">
+                                <div>
+                                    <div class="subtitle_referent">Savoir-faire validés :</div> 
+                                    <div id='savoir_faire_valides'><?php echo $texte_savoir_faire_observes ?></div>
+                                </div>
+                            </td>
+                            <td class="referent">
+                                <div>
+                                    <div class="subtitle_referent">Savoir-être validés :</div> 
+                                    <div id='savoir_etre_valides'><?php echo $texte_savoir_etre_observes ?></div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                 </main>
 </body>
 <script>

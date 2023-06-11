@@ -86,7 +86,7 @@
 						"<table id='$id_ligne' class='reference' onclick='clic_ref(this)'>
 							<tr>
 								<td>Milieu : $ligne_decoupee[2]<br>Référent(e) : <span class='nom_referent_liste_ref'>$ligne_decoupee[8] $ligne_decoupee[7]</span><br>Date d'envoi : <span class='date_experience_ref_liste'>$ligne_decoupee[10]</span></td>
-								<td style='vertical-align:top;width:190px;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[11]</span></td>
+								<td style='vertical-align:top;width:190px;text-align:right;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[11]</span></td>
 							</tr>
 						</table>
 						<br>";
