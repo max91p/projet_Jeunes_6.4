@@ -73,8 +73,13 @@ body{
     font-size: x-large;
 }
 
-fieldset {
-    border:1px solid #029ec6; 
+fieldset{
+    border:1px solid #029ec6;
+}
+
+.ref {
+    border:1px solid #029ec6;
+    cursor: pointer; 
 }
 
 .bleu{

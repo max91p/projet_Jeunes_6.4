@@ -95,7 +95,7 @@
 						$date=$liste_references[$i][10];
 						$milieu=$liste_references[$i][2];
 						$id_ligne=$liste_references[$i][0];
-						echo 	"<fieldset id='$id_ligne' onclick='clic_ref(this)'>
+						echo 	"<fieldset class='ref' id='$id_ligne' onclick='clic_ref(this)'>
 									<div class='bleu'>Milieu : </div>$milieu<br><br>
 									<div class='bleu'>Référent(e) : </div>$prenom_ref $nom_ref<br><br>
 									<div class='bleu'>Date d'envoi : </div>$date

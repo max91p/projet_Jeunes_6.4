@@ -1,0 +1,140 @@
+header{
+    width: 100%;
+    height: 130px;
+    left: 0px;
+    top: 0px;
+    background: #bfbfbf;
+}
+a{
+    all: unset;
+}
+
+body{
+    margin : 0;
+}
+
+#logo{
+    vertical-align: middle;
+    line-height: 130px;
+    text-align: left;
+    width:200px;
+    display: inline-block;
+    position:relative;
+    cursor: pointer;
+    max-height: 130px;
+    margin-right: 15px;
+}
+#logo > a > img{
+    height: 130px;
+    width: 200px;
+    
+}
+
+#bouton{
+    position:absolute;
+    right:40px;
+    top: 40px;
+    height:50px;
+    width:auto;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    background: rgb(240, 9, 124);
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-size: 30px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#title{
+    text-align: center;
+    color: #ABDA4E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.jeune{
+    box-sizing: border-box;
+    border: 2px solid rgb(240, 9, 124);
+    padding: 10px;
+    vertical-align: top;
+}
+.referent{
+    box-sizing: border-box;
+    border: 2px solid #ABDA4E;
+    padding: 10px;
+    vertical-align: top;
+}
+.subtitle_jeune{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(240, 9, 124);
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+.subtitle_referent{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ABDA4E;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+.rose{
+    color: rgb(240, 9, 124);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+.vert{
+    color: #ABDA4E;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+.texte{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#description{
+    height: 116px;
+    overflow-y: scroll;
+    border: 1px solid rgb(240, 9, 124);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+input[type="text"], 
+textarea[type="text"],
+input[type="email"]
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    
+}
+input[type="text"]:focus, 
+textarea[type="text"]:focus,
+input[type="email"]:focus
+{
+    outline: none;
+}
+textarea[type="text"]{
+    resize: none;
+}
+input[type="submit"]{
+    background-color:#ABDA4E ;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input[type="submit"]:hover{
+    outline: 2px solid #ABDA4E;
+    outline-offset: 2px;
+}
+#submit{
+    text-align: center;
+    margin-bottom: 20px;
+}
