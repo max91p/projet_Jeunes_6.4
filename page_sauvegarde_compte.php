@@ -1,11 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 session_start();
 
-//enlever les caractères invisibles de fin et de début dans une saisie
+//la fonction trim enlève les caractères invisibles de fin et de début dans une saisie
 $firstname  = trim($_POST['firstname']);
 $lastname   = trim($_POST['lastname']);
 $birth      = trim($_POST['birth']);
@@ -20,16 +17,18 @@ $password   = trim($_POST['password']);
     exit();
  }  
 
+//ouverture du fichier people.csv
  $fp = fopen('people.csv', 'r');
  
  while(feof($fp) == false) {
  
+    //utilisation de la fonction fgets pour lire tous les caractères du fichier
      $csv = fgets($fp);
-     var_dump($csv);
      
      //prend une chaine csv et le transforme en tableau
      $user = str_getcsv($csv, ';');
  
+     //boucle permettant de savoir si un utilisateur existe ou pas
      if ($username == $user[3]) {
          echo 'utilisateur déjà existant';
          fclose($fp);
@@ -37,15 +36,11 @@ $password   = trim($_POST['password']);
          header('Location: page_creation_compte.php');
          exit();
          break;
-     
-        // break;
-        // exit();
      }
  }
  
  fclose($fp);
- 
-
+//si l'utilisateur n'existe pas, il est ajouté au fichier people.csv
 $csv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . password_hash($password, null, []) . "\n";
 
 //écriture dans le fichier csv des données entrées
