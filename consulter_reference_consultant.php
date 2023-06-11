@@ -61,7 +61,7 @@
 
     <header>
         <div id="logo">
-            <a href=page_accueil2.html><img src="../media/logo.png" alt="Logo site"></a>
+            <a href=../page_accueil2.html><img src="../media/logo.png" alt="Logo site"></a>
         </div>
         <div id="texte">Je donne de la valeur à ton engagement</div>
         <div id="bouton">
