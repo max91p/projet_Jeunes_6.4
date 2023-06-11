@@ -38,6 +38,8 @@ foreach ($data as $key => $csv) {
     if ($username == $user[3]) {
 	//création de la liste de caractères dans la forme voulue dans le fichier csv 
         $newCsv = $firstname . ';' . $lastname . ';' . $birth . ';' . $username . ';' . $new_password . "\n";
+	$_SESSION['nom'] = $lastname;
+        $_SESSION["prenom"] = $firstname;
         $data[$key] = $newCsv;
 	echo "Le compte a bien été modifié !"
         ?>
