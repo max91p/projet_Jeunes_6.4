@@ -40,10 +40,10 @@
                             $statut=$liste_demande[$i][11];
                             $date=$liste_demande[$i][10];
                             echo 
-                            "<table style='position:absolute;left:27%;'>
-                                <td><input style='width:100%;' name='ref_$id' type='checkbox'>
+                            "<table id='checkbox'>
+                                <td><input name='ref_$id' type='checkbox'>
                             </table>
-                            <table style='border:2px solid black; align:center;margin-right:30%;margin-left:30%;width:40%;padding:5px;'>
+                            <table class='form'>
                                 <tr style='font-size:20px;'>
                                     <td>Milieu : $milieu<br>Référent(e) : $prenom_ref $nom_ref<br>Date d'envoi : $date</td>
                                     <td style='vertical-align:top;text-align:right;'>Statut : $statut</td>
@@ -57,7 +57,7 @@
                         echo 
                                 "<br>
                                 <div ALIGN=center> 
-                                    <input style='font-size:20px;' type='submit' value='Valider'>
+                                    <input type='submit' value='Valider'>
                                 </div>
                             </form>  
                         </main>";//Affichage de la fin du HTML
