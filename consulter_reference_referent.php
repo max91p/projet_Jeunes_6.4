@@ -63,7 +63,7 @@
 							<a href=page_accueil2.html><img src='../media/logo.png' alt='Logo site'></a>
 						</div>
 						<div id='bouton'>
-							Jeune
+							Referent
 						</div>
 					</header>
 					<main>
@@ -84,7 +84,7 @@
 							<a href=page_accueil2.html><img src='../media/logo.png' alt='Logo site'></a>
 						</div>
 						<div id='bouton'>
-							Jeune
+							Referent
 						</div>
 					</header>
 					<main>
@@ -194,7 +194,7 @@
 							<a href=page_accueil2.html><img src='../media/logo.png' alt='Logo site'></a>
 						</div>
 						<div id='bouton'>
-							Jeune
+							Referent
 						</div>
 					</header>
 					<main>
