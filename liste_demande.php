@@ -9,10 +9,9 @@
 	<title>Liste des demandes de références</title>
     <script>
         function clic_ref(table){
-            var id=table.getAttribute("id");
-            var td_statut=document.querySelector("#"+id+" > tbody > tr > td:nth-child(2)>span");
-            var statut=td_statut.innerHTML;
-			console.log(statut);
+            var id=table.getAttribute("id");//Récupération de l'id de la référence cliquée
+            var td_statut=document.querySelector("#"+id+" > tbody > tr > td:nth-child(2)>span");//Récupération du span contenant le statut de la référence
+            var statut=td_statut.innerHTML; //Récupération du texte du span contenant le statut
             if (statut=="Répondu"){
                 location.href='voir_demande_repondu.php/?reference_id='+id;
             }else{
@@ -48,35 +47,35 @@
 			</div>
 
 			<a href='accueil_compte.html'><img id='home' src='./media/home.png' alt='home'></a>
-			";
-		$liste_demande_total=array();
+			";//Affichage du html
+		$liste_demande_total=array(); //Va contenir la liste entière des références du jeune
 		if (file_exists("references.txt")){
 			$fichier=fopen("references.txt","r");
 			$email_jeune=$_SESSION["email"];
 			while (!feof($fichier)){
-				$ligne_entiere="";
+				$ligne_entiere="";//va stocker la référence entière
 				$fin=false;
-				$nb_saut=0;
+				$nb_saut=0;//nombre de ligne contenant seulement un saut de ligne, quand >=2, on passe à la ref suivante
 				while ($fin==false && !feof($fichier)){
 					$ligne=fgets($fichier);
-					if ($ligne=="\n" || $ligne=="\r\n"){
-						if ($nb_saut==1){
-							$fin=true;
+					if ($ligne=="\n" || $ligne=="\r\n"){//la ligne contient qu'un saut de ligne
+						if ($nb_saut==1){ //Si la ligne précédente ne contenait qu'un saut de ligne
+							$fin=true; //La référence est entière
 						}else{
 							$nb_saut=$nb_saut+1;
 						}
-					}elseif ($nb_saut==1){
-						$nb_saut=0;
-						$ligne_entiere .= "\n$ligne";
+					}elseif ($nb_saut==1){//La ligne précédente contenait qu'un saut de ligne mais pas celle là
+						$nb_saut=0;//La référence n'est pas finie
+						$ligne_entiere .= "\n$ligne";//ajout du contenu de la ligne à la référence
 					}else{
-						$ligne_entiere .= "$ligne";
+						$ligne_entiere .= "$ligne";//ajout du contenu de la ligne à la référence
 					}
 				}
-				if (strlen($ligne_entiere)>2){
-					$ligne_decoupee=explode('|',$ligne_entiere);
+				if (strlen($ligne_entiere)>2){ //Si ligne_entiere n'est pas vide ou pas presque vide
+					$ligne_decoupee=explode('|',$ligne_entiere); //transforme une chaine de caractères avec les données séparées par '|' en liste
 					$id_ligne=$ligne_decoupee[0];
 					$email_ligne=$ligne_decoupee[1];
-					$couleur="grey";
+					$couleur="grey"; //Couleur du statut
 					if ($email_ligne==$email_jeune){
 						if ($ligne_decoupee[11]=="Répondu"){
 							$couleur="green";
@@ -89,19 +88,20 @@
 								<td style='vertical-align:top;width:190px;text-align:right;'>Statut : <span style='color:$couleur;'>$ligne_decoupee[11]</span></td>
 							</tr>
 						</table>
-						<br>";
+						<br>"; //Affichage de la référence en HTML
 					}
 				}
 			}
-			if (count($liste_demande_total)==0){
+			if (count($liste_demande_total)==0){ //Aucune référence pour le jeune connecté
 				echo "<div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 			}
 			fclose($fichier);
-		}else{
+		}else{//Le fichier existe pas, donc il n'y a aucune référence existante
 			echo "<div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
 		}
 		$_SESSION['liste_demande']=$liste_demande_total;
 	?>
+	</main>	
 </body>
 <script>
 	// recupère la largeur du navigateur et cache le texte si la largeur est inférieure à 865px

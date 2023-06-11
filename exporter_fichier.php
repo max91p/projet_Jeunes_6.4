@@ -1,9 +1,10 @@
 <?php
     session_start();
+    //Importation de la bibliothèque Dompdf qui convertit un fichier html en pdf
     require_once 'dompdf/autoload.inc.php';
     use Dompdf\Dompdf;
     $ref_a_exporter=$_SESSION["ref_a_exporter"];
-    $fichier=fopen("livret_references.html","w");
+    $fichier=fopen("livret_references.html","w");//Ouverture du fichier html qui sera téléchargé par le site en écrasant tout contenu potentiel
     $debut="<!DOCTYPE html>
     <html>
         <head>
@@ -16,9 +17,7 @@
         </head>
         <body>";
     fwrite($fichier,$debut);
-    for ($i=0;$i<count($ref_a_exporter);$i++){
-        // 0         1         2       3         4            5            6             7               8               9          10    11             12                    13                14  
-		//"$id|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut|$savoir_faire_valides|$savoir_etre_valides|$commentaires\n\n\n";
+    for ($i=0;$i<count($ref_a_exporter);$i++){//Ecriture dans le fichier de chaque références sélectionnées
         $ref=$ref_a_exporter[$i];
         $descr=str_replace("\n","<br>",$ref[4]);
         $sf=str_replace("\n","<br>",$ref[5]);
@@ -45,34 +44,33 @@
     fwrite($fichier,$fin);
     fclose($fichier);
     if ($_POST['format']=="pdf"){
-        $dompdf = new Dompdf();
-        $html = file_get_contents("livret_references.html");
-        $dompdf->loadHtml($html);
+        $dompdf = new Dompdf(); //Initialise la variable comme un objet de la classe Dompdf
+        $html = file_get_contents("livret_references.html"); //Récupère le contenu de livret_references.html
+        $dompdf->loadHtml($html);//Charge le code html
 
-        // (Optional) Setup the paper size and orientation
+        //Configure la taille du pdf et son orientation
         $dompdf->setPaper('A4', 'portrait');
 
-        // Render the HTML as PDF
+        //transforme le html en pdf
         $dompdf->render();
 
-        // Output the generated PDF to Browser
+        //Exporter le PDF généré vers le navigateur
         $dompdf->stream("livret_references");
     }else{
+        //Definit les informations du header
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Expires: 0");
         header('Content-Disposition: attachment; filename="'.basename("livret_references.html").'"');
         header('Content-Length: ' . filesize("livret_references.html"));
         header('Pragma: public');
 
-        //Clear system output buffer
+        //Vide le buffer de sortie du système
         flush();
 
-        //Read the size of the file
+        //Lit la taille du fichier
         readfile("livret_references.html");
 
-        //Terminate from the script
+        //Termine
         die();
     }
 ?>

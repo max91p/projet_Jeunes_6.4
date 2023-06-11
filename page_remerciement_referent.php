@@ -11,6 +11,7 @@
 </head>
 <body style="margin: 0;">
     <?php
+		//Récupération des variables de session crées dans la page précédente
         $nom_jeune=$_SESSION['nom_jeune'];
         $prenom_jeune=$_SESSION['prenom_jeune'];
         $milieu=$_SESSION['milieu'];
@@ -36,7 +37,7 @@
 
 					</fieldset>
 				</div>
-				</main> ";
+				</main> "; //Affichage HTML
 				?>
 	
 </body>

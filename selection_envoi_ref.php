@@ -22,15 +22,15 @@
                 <main>
                     <a href='liste_demande.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
                     <p>Sélectionner les références que vous souhaitez envoyer</p>";
-                $liste_demande=$_SESSION['liste_demande'];
-                if (count($liste_demande)==0){
+                $liste_demande=$_SESSION['liste_demande'];//Liste des références du jeune
+                if (count($liste_demande)==0){//Si le jeune n'a aucune référence
                     echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence</div><br></main>";
                 }else{
                     $demandes_repondues=array();
                     for ($i=0;$i<count($liste_demande);$i++){
                         if ($liste_demande[$i][11]=="Répondu"){
                             array_push($demandes_repondues,$liste_demande[$i]);
-                            if (count($demandes_repondues)==1){
+                            if (count($demandes_repondues)==1){//Si c'est la première référence répondu de la liste
                                 echo "<form action='infos_consultant.php' method='post'>";
                             }
                             $id=$liste_demande[$i][0];
@@ -48,10 +48,10 @@
                                     <td>Milieu : $milieu<br>Référent(e) : $prenom_ref $nom_ref<br>Date d'envoi : $date</td>
                                     <td style='vertical-align:top;text-align:right;'>Statut : $statut</td>
                                 </tr>
-                            </table><br>";
+                            </table><br>"; //Affichage de la référence
                         }
                     }
-                    if (count($demandes_repondues)==0){
+                    if (count($demandes_repondues)==0){//Si le jeune n'a aucune référence répondue
                         echo "<br><br><br><br><br><br><div ALIGN=center>Vous n'avez aucune demande de référence répondues</div><br></main>";
                     }else{
                         echo 
@@ -60,7 +60,7 @@
                                     <input style='font-size:20px;' type='submit' value='Valider'>
                                 </div>
                             </form>  
-                        </main>";
+                        </main>";//Affichage de la fin du HTML
                     }
                 }
                 

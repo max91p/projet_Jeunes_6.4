@@ -10,28 +10,22 @@
 </head>
 <body style="margin: 0;">
     <?php
-        use PHPMailer\PHPMailer\PHPMailer; 
-        use PHPMailer\PHPMailer\SMTP; 
-        use PHPMailer\PHPMailer\Exception;
-        require 'PHPMailer/src/Exception.php'; 
-        require 'PHPMailer/src/PHPMailer.php'; 
-        require 'PHPMailer/src/SMTP.php';
-        $ids_ref_a_envoyer="";
-        $liste_demande=$_SESSION['liste_demande'];
+        $ids_ref_a_envoyer="";//Stocke les id des références sélectionnées sous forme d'un chaine de caractères
+        $liste_demande=$_SESSION['liste_demande']; //Liste des références du jeune
         for ($i=0;$i<count($liste_demande);$i++){
             $id=$liste_demande[$i][0];
-            if ($liste_demande[$i][11]=="Répondu" && isset($_POST["ref_$id"])){
+            if (isset($_POST["ref_$id"])){//Si la référence apparaissait sur la page d'avant c'est à dire si elle faisait partie des références répondues de l'utilisateur
                 $selection=$_POST["ref_$id"];
-                if ($selection=="on"){
+                if ($selection=="on"){//Si la référence a été sélectionnée
                     $ids_ref_a_envoyer .= "$id,";
                 }
             }
         }
-        if (strlen($ids_ref_a_envoyer)==0){
-            header("Location: selection_envoi_ref.php", true);
+        if (strlen($ids_ref_a_envoyer)==0){//Si aucune référence a été sélectionnée
+            header("Location: selection_envoi_ref.php", true); //renvoi à la page précédente
             exit();
         }
-        $_SESSION['nouv_str_ids']=substr($ids_ref_a_envoyer,0,strlen($ids_ref_a_envoyer)-1);
+        $_SESSION['nouv_str_ids']=substr($ids_ref_a_envoyer,0,strlen($ids_ref_a_envoyer)-1); //Conservation de la liste pour l'envoi
         
     ?>
 	<header>

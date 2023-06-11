@@ -3,46 +3,46 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <link rel="stylesheet" href="../style/voir_demande_attente.css">
-    <title>Voir mes référence</title>
+    <title>Voir mes références</title>
 </head>
 <body>
     <?php
-		if (isset($_GET['reference_id'])){
-			$id=$_GET['reference_id'];
+		if (isset($_GET['reference_id'])){//Si l'url contient le champ reference_id=
+			$id=$_GET['reference_id'];//Récupération de l'id de la référence
 			$fichier=fopen("references.txt","r");
 			$trouve=false;
+            //On cherche les détails de la référence dont l'id est $id
 			while ($trouve==false && !feof($fichier)){
-				$ligne_entiere="";
+				$ligne_entiere="";//va stocker la référence entière
 				$fin=false;
-				$nb_saut=0;
+				$nb_saut=0;//nombre de ligne contenant seulement un saut de ligne, quand >=2, on passe à la ref suivante
 				while ($fin==false && !feof($fichier)){
 					$ligne=fgets($fichier);
-					if ($ligne=="\n" || $ligne=="\r\n"){
-						if ($nb_saut==1){
-							$fin=true;
+					if ($ligne=="\n" || $ligne=="\r\n"){//la ligne contient qu'un saut de ligne
+						if ($nb_saut==1){ //Si la ligne précédente ne contenait qu'un saut de ligne
+							$fin=true; //La référence est entière
 						}else{
 							$nb_saut=$nb_saut+1;
 						}
-					}elseif ($nb_saut==1){
-						$nb_saut=0;
-						$ligne_entiere .= "\n$ligne";
+					}elseif ($nb_saut==1){//La ligne précédente contenait qu'un saut de ligne mais pas celle là
+						$nb_saut=0;//La référence n'est pas finie
+						$ligne_entiere .= "\n$ligne";//ajout du contenu de la ligne à la référence
 					}else{
-						$ligne_entiere .= "$ligne";
+						$ligne_entiere .= "$ligne";//ajout du contenu de la ligne à la référence
 					}
 				}
-				if (strlen($ligne_entiere)>2){
-					$ligne_decoupee=explode('|',$ligne_entiere);
+				if (strlen($ligne_entiere)>2){ //Si ligne_entiere n'est pas vide ou pas presque vide
+					$ligne_decoupee=explode('|',$ligne_entiere); //transforme une chaine de caractères avec les données séparées par '|' en liste
 					$id_ligne=$ligne_decoupee[0];
 					if ($id_ligne==$id){
-						$trouve=true;
+						$trouve=true; //On a trouvé la référence, on s'arrête de parcourir le fichier
 					}
 				}
 			}
-			if ($trouve==false){
+			if ($trouve==false){//Id introuvé
 				echo "Erreur sur l'ID";
 			}else{
-                // 0         1         2       3         4            5            6             7               8               9          10    11
-			    //"$id|$email_jeune|$milieu|$duree|$description|$savoir_faire|$savoir_etre|$nom_referent|$prenom_referent|$email_referent|$date|$statut\n\n\n";
+                //On remplace \n par des <br> pour que ça affiche des sauts de ligne
 				$texte_description=str_replace("\r\n","<br>",$ligne_decoupee[4]);
                 $texte_savoir_faire=str_replace("\n","<br>",$ligne_decoupee[5]);
                 $texte_savoir_etre=str_replace("\n","<br>",$ligne_decoupee[6]);
@@ -105,7 +105,7 @@
                     <br>
                     <p>Envoyé le $ligne_decoupee[10]<br>Statut : <span id='statut'>$ligne_decoupee[11]</span></p>
                     <br>
-                </main>";
+                </main>";//Affichage du html
 			}
 			fclose($fichier);
 		}
