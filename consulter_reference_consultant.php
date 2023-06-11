@@ -10,7 +10,9 @@
 </head>
 <body>
 <?php
+        //si l'url contient le champ de reference_id=
 		if (isset($_GET['reference_id'])){
+            //récupération de l'id de référence
             $liste_id=$_SESSION['liste_id'];
 			$id=$_GET['reference_id'];
 			$fichier=fopen("references.txt","r");
@@ -18,31 +20,41 @@
 			while ($trouve==false && !feof($fichier)){
 				$ligne_entiere="";
 				$fin=false;
+                //quand le nombre de sauts de ligne est sup ou egal a 2, on passe à la référence suivante
 				$nb_saut=0;
 				while ($fin==false && !feof($fichier)){
 					$ligne=fgets($fichier);
-                    //gestion des lignes vides
+                    //la ligne ne contient qu'un seul saut de ligne
 					if ($ligne=="\n" || $ligne=="\r\n"){
+                        //ligne précédente ne contient qu'un seul saut de ligne
 						if ($nb_saut==1){
+                            //référence entière
 							$fin=true;
 						}else{
+                            //sinon il faut sauter une ligne
 							$nb_saut=$nb_saut+1;
 						}
 					}elseif ($nb_saut==1){
+                        //la référence n'est pas terminée
 						$nb_saut=0;
+                        //ajout du contenu de la ligne à la référence
 						$ligne_entiere .= "\n$ligne";
 					}else{
 						$ligne_entiere .= "$ligne";
 					}
 				}
 				if (strlen($ligne_entiere)>2){
+                    //transforme une chaîne de caractères avec les données séparées par un pipe en liste
 					$ligne_decoupee=explode('|',$ligne_entiere);
 					$id_ligne=$ligne_decoupee[0];
+                    
 					if ($id_ligne==$id){
+                        //référence trouvée, on arrête de parcourir le fichier
 						$trouve=true;
 					}
 				}
 			}
+            //l'id n'a pas été trouvé
 			if ($trouve==false){
 				echo "Erreur sur l'ID";
 			}else{
@@ -127,7 +139,7 @@
                             </td>
                         </tr>
                     </table>
-                </main>
+                </main> <!--affichage du html-->
 </body>
 <script>
 	// recupère la largeur du navigateur et cache le texte si la largeur est inférieure à 865px
