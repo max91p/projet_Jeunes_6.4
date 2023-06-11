@@ -55,8 +55,6 @@ $data = file_put_contents('people.csv', $csv, FILE_APPEND);
 $_SESSION['nom'] = $lastname;
 $_SESSION["prenom"] = $firstname;
 $_SESSION["email"] = $username;
-$_SESSION["naissance"] = $birth;
-$_SESSION["mdp"] = $password;
 
 header('Location: accueil_compte.html');
 exit();
