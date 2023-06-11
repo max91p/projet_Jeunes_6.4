@@ -11,7 +11,7 @@
 </head>
 <body>
 	<?php
-		if(isset($_SESSION["email"]) && isset($_SESSION["prenom"]) && isset($_SESSION["nom"])){
+		if(isset($_SESSION["email"]) && isset($_SESSION["prenom"]) && isset($_SESSION["nom"])){//Si ces variables de sessions existent, l'utilisateur est déjà connecté
 			header('Location: accueil_compte.html');
 			exit();
 		}
