@@ -24,8 +24,6 @@ foreach ($data as $item) {
         $_SESSION['email'] = $username;
         $_SESSION["prenom"] = $csv[0];
         $_SESSION["nom"] = $csv[1];
-        $_SESSION["naissance"] = $csv[2];
-        $_SESSION["mdp"] = $password;
         ?>
             <p>
                  compte valide
