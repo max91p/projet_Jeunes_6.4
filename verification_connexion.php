@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
 </head>
 <body>
 
@@ -20,17 +19,15 @@ foreach ($data as $item) {
     //on décode chaque ligne comme étant du csv
     $csv = str_getcsv($item, ';');
    
+    //vérification que le mail et le mot de passe correspondent bien 
     if ($username == $csv[3] && password_verify($password, $csv[4]) == true) {
+        //transmission des variables de session pour les pages suivantes
         $_SESSION['email'] = $username;
         $_SESSION["prenom"] = $csv[0];
         $_SESSION["nom"] = $csv[1];
-        ?>
-            <p>
-                 compte valide
-            </p>
+        $_SESSION["naissance"] = $csv[2];
 
-<meta http-equiv="refresh" content="3; URL=accueil_compte.html">
-        <?php 
+        header('Location: accueil_compte.html');
     
         exit();
     }
