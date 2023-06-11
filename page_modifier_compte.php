@@ -16,31 +16,19 @@
 		</div>
 	</header>
 	<main>
-	<a href='voir_profil.php'><img  id='arrow' src='./media/arrow.png' alt='arrow'></a>
+		<a href='voir_profil.php'><img id='arrow' src='./media/arrow.png' alt='arrow'></a>
 <?php
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
 
 	session_start();
 	$username = $_SESSION['email'];
-	//session_unset();
-	//session_destroy();
-
-	echo 'username' . $username;
-	var_dump($username);
 
 	// récupération de toutes les lignes du fchier dans un tableau
 	$data = file('people.csv');
 
-	//echo $username;
-	//débug
-	//var_dump($_POST);
-
 	foreach ($data as $item) {
 		//on décode chaque ligne comme étant du csv
 		$csv = str_getcsv($item, ';');
-		//var_dump($csv);
+	
 		if ($username == $csv[3]) {
 
 			$lastname = $csv[1];
@@ -48,7 +36,6 @@
 			$birth = $csv[2];
 			$username = $csv[3];
 			$password = $csv[4];
-			//echo "utilisateur trouvé";
 			break;
 		}
 	}
@@ -71,7 +58,7 @@
 			</div>
 			<div class="form">
 				<label for="password">Mot de passe</label>
-				<input id="password" name="password" type="password">
+				<input id="password" value="<?php echo $password; ?>" name="password" type="password">
 			</div>
 			<div id="submit" class="form"> 
 				<input type="submit" value="Enregistrer">
