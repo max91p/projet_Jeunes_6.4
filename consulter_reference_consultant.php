@@ -138,6 +138,12 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+							<td  colspan='3' class='referent'>
+                                <div class='subtitle_referent'>Commentaires :</div>
+								<div id='commentaires'> <?php echo $texte_commentaires ?></div>
+							</td>
+						</tr>
                     </table>
                 </main> <!--affichage du html-->
 </body>
