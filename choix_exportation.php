@@ -4,22 +4,23 @@
 <!DOCTYPE html>
 <html>
     <?php
-        $ref_a_exporter=array();
+        $ref_a_exporter=array(); //Liste des références sélectionnées
         $liste_demande=$_SESSION['liste_demande'];
+        //Le but est de récupérer les informations des références qui ont été sélectionnées
         for ($i=0;$i<count($liste_demande);$i++){
             $id=$liste_demande[$i][0];
-            if ($liste_demande[$i][11]=="Répondu" && isset($_POST["ref_$id"])){
+            if (isset($_POST["ref_$id"])){ //Si la référence apparaissait sur la page d'avant c'est à dire si elle faisait partie des références répondues de l'utilisateur
                 $selection=$_POST["ref_$id"];
-                if ($selection=="on"){
+                if ($selection=="on"){ //Si la référence a été sélectionnée
                     array_push($ref_a_exporter,$liste_demande[$i]);
                 }
             }
         }
-        if (count($ref_a_exporter)==0){
-            header("Location: selection_exporter_ref.php", true);
+        if (count($ref_a_exporter)==0){ //Si aucune référence a été sélectionnée
+            header("Location: selection_exporter_ref.php", true); //renvoi à la page précédente
             exit();
         }
-        $_SESSION["ref_a_exporter"]=$ref_a_exporter;
+        $_SESSION["ref_a_exporter"]=$ref_a_exporter; //Conservation de la liste pour l'exportation
     ?>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
